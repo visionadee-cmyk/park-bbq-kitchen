@@ -1,0 +1,54 @@
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import '../globals.css'
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+import { AuthProvider } from '@/contexts/AuthContext'
+import { LanguageProvider } from '@/contexts/LanguageContext'
+import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Park BBQ Kitchen Booking System',
+  description: 'Book the Park BBQ Kitchen for your events',
+  manifest: '/manifest.json',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Park BBQ Kitchen',
+  },
+  icons: {
+    icon: '/icon-192.png',
+    apple: '/icon-192.png',
+  },
+}
+
+export const viewport = {
+  themeColor: '#000000',
+}
+
+export default async function LocaleLayout({
+  children,
+  params: { locale }
+}: {
+  children: React.ReactNode
+  params: { locale: string }
+}) {
+  const messages = await getMessages()
+
+  return (
+    <html lang={locale}>
+      <body className={inter.className}>
+        <ServiceWorkerRegistration />
+        <LanguageProvider>
+          <AuthProvider>
+            <NextIntlClientProvider messages={messages}>
+              {children}
+            </NextIntlClientProvider>
+          </AuthProvider>
+        </LanguageProvider>
+      </body>
+    </html>
+  )
+}

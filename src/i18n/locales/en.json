@@ -1,0 +1,152 @@
+{
+  "common": {
+    "appName": "Park BBQ Kitchen",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "close": "Close",
+    "language": "Language"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "employeeId": "Employee ID",
+    "password": "Password",
+    "forgotPassword": "Forgot Password?",
+    "loginSuccess": "Login successful",
+    "loginError": "Invalid credentials",
+    "welcomeBack": "Welcome back",
+    "pleaseSignIn": "Please sign in to continue"
+  },
+  "booking": {
+    "newBooking": "New Booking",
+    "bookingDate": "Booking Date",
+    "bookingTime": "Booking Time",
+    "numberOfGuests": "Number of Guests",
+    "purpose": "Purpose",
+    "remarks": "Remarks",
+    "agreement": "Kitchen Agreement",
+    "agreeToRules": "I agree to all kitchen rules",
+    "mustAgree": "You must agree to the kitchen rules",
+    "bookingSuccess": "Booking successful",
+    "bookingError": "Booking failed",
+    "alreadyBooked": "You already have a booking for this date",
+    "slotUnavailable": "This slot is not available",
+    "maxGuests": "Maximum 50 guests allowed",
+    "pastDate": "Cannot select past dates",
+    "maxDaysAhead": "Maximum 30 days ahead",
+    "selectDate": "Select a date",
+    "selectSlot": "Select a time slot",
+    "available": "Available",
+    "booked": "Booked"
+  },
+  "agreement": {
+    "title": "KITCHEN USE AGREEMENT",
+    "intro": "I hereby agree to the following terms regarding use of the kitchen.",
+    "rule1": "I will clean the kitchen immediately after cooking.",
+    "rule2": "I will wash all utensils, pots and equipment before leaving.",
+    "rule3": "I will use all equipment carefully.",
+    "rule4": "Any damaged equipment will be reported immediately.",
+    "rule5": "I will leave the kitchen clean for the next user.",
+    "rule6": "I understand failure to follow these rules may result in disciplinary action."
+  },
+  "purpose": {
+    "familyBBQ": "Family BBQ",
+    "birthday": "Birthday",
+    "friendsGathering": "Friends Gathering",
+    "teamDinner": "Team Dinner",
+    "other": "Other"
+  },
+  "dashboard": {
+    "myDashboard": "My Dashboard",
+    "upcomingBookings": "Upcoming Bookings",
+    "pastBookings": "Past Bookings",
+    "cancelledBookings": "Cancelled Bookings",
+    "bookingHistory": "Booking History",
+    "noBookings": "No bookings found"
+  },
+  "admin": {
+    "adminDashboard": "Admin Dashboard",
+    "todayBookings": "Today's Bookings",
+    "tomorrowBookings": "Tomorrow's Bookings",
+    "availableSlots": "Available Slots",
+    "occupiedSlots": "Occupied Slots",
+    "totalEmployees": "Total Employees",
+    "monthlyBookings": "Monthly Bookings",
+    "weeklyBookings": "Weekly Bookings",
+    "cancelled": "Cancelled",
+    "pending": "Pending",
+    "completed": "Completed",
+    "booked": "Booked",
+    "manageEmployees": "Manage Employees",
+    "blockDates": "Block Dates",
+    "settings": "Settings",
+    "reports": "Reports",
+    "analytics": "Analytics"
+  },
+  "status": {
+    "booked": "Booked",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "noShow": "No Show"
+  },
+  "calendar": {
+    "monthly": "Monthly",
+    "weekly": "Weekly",
+    "daily": "Daily",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "thisWeek": "This Week",
+    "thisMonth": "This Month"
+  },
+  "reports": {
+    "bookingsByDepartment": "Bookings by Department",
+    "bookingsByEmployee": "Bookings by Employee",
+    "peakHours": "Peak Hours",
+    "mostActiveDepartment": "Most Active Department",
+    "averageGuests": "Average Guests",
+    "kitchenUtilization": "Kitchen Utilization",
+    "monthlyReport": "Monthly Report",
+    "yearlyReport": "Yearly Report"
+  },
+  "notifications": {
+    "bookingConfirmed": "Booking confirmed",
+    "bookingCancelled": "Booking cancelled",
+    "reminder": "Reminder",
+    "kitchenReady": "Kitchen ready",
+    "bookingFinished": "Booking finished"
+  },
+  "employee": {
+    "name": "Name",
+    "department": "Department",
+    "designation": "Designation",
+    "phone": "Phone",
+    "email": "Email",
+    "status": "Status",
+    "role": "Role",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "timeSlots": {
+    "08_00": "08:00–10:00",
+    "10_00": "10:00–12:00",
+    "12_00": "12:00–14:00",
+    "14_00": "14:00–16:00",
+    "16_00": "16:00–18:00",
+    "18_00": "18:00–20:00",
+    "20_00": "20:00–22:00"
+  }
+}

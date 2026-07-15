@@ -1,0 +1,152 @@
+{
+  "common": {
+    "appName": "পার্ক বারবিকিউ কিচেন",
+    "loading": "লোড হচ্ছে...",
+    "error": "ত্রুটি",
+    "success": "সফল",
+    "cancel": "বাতিল",
+    "save": "সেভ",
+    "delete": "মুছুন",
+    "edit": "সম্পাদনা",
+    "search": "অনুসন্ধান",
+    "filter": "ফিল্টার",
+    "export": "এক্সপোর্ট",
+    "back": "পিছনে",
+    "next": "পরবর্তী",
+    "submit": "জমা দিন",
+    "confirm": "নিশ্চিত করুন",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "close": "বন্ধ করুন",
+    "language": "ভাষা"
+  },
+  "auth": {
+    "login": "লগইন",
+    "logout": "লগআউট",
+    "employeeId": "এমপ্লয়ি আইডি",
+    "password": "পাসওয়ার্ড",
+    "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
+    "loginSuccess": "লগইন সফল",
+    "loginError": "ভুল তথ্য",
+    "welcomeBack": "স্বাগতম",
+    "pleaseSignIn": "চালিয়ে যেতে লগইন করুন"
+  },
+  "booking": {
+    "newBooking": "নতুন বুকিং",
+    "bookingDate": "বুকিংয়ের তারিখ",
+    "bookingTime": "বুকিংয়ের সময়",
+    "numberOfGuests": "অতিথির সংখ্যা",
+    "purpose": "উদ্দেশ্য",
+    "remarks": "মতামত",
+    "agreement": "কিচেন এগ্রিমেন্ট",
+    "agreeToRules": "আমি রান্নাঘরের সকল নিয়ম মেনে চলব",
+    "mustAgree": "আপনাকে রান্নাঘরের নিয়মগুলো মেনে চলতে হবে",
+    "bookingSuccess": "বুকিং সফল",
+    "bookingError": "বুকিং ব্যর্থ হয়েছে",
+    "alreadyBooked": "এই তারিখে আপনার ইতিমধ্যে একটি বুকিং আছে",
+    "slotUnavailable": "এই স্লটটি ফাঁকা নেই",
+    "maxGuests": "সর্বোচ্চ ৫০ জন অতিথি",
+    "pastDate": "পুরানো তারিখ সিলেক্ট করা যাবে না",
+    "maxDaysAhead": "সর্বোচ্চ ৩০ দিন আগে বুক করা যাবে",
+    "selectDate": "তারিখ নির্বাচন করুন",
+    "selectSlot": "সময় নির্বাচন করুন",
+    "available": "উপলব্ধ",
+    "booked": "বুক করা হয়েছে"
+  },
+  "agreement": {
+    "title": "রান্নাঘর ব্যবহারের চুক্তি",
+    "intro": "রান্নাঘর ব্যবহারের শর্তাবলি আমি মেনে নিচ্ছি।",
+    "rule1": "রান্নার পরপরই আমি রান্নাঘর পরিষ্কার করব।",
+    "rule2": "বের হওয়ার আগে সব তৈজসপত্র ও সরঞ্জাম ধুয়ে রাখব।",
+    "rule3": "সব সরঞ্জাম সতর্কতার সাথে ব্যবহার করব।",
+    "rule4": "কোনো কিছু ক্ষতিগ্রস্ত হলে সাথে সাথে জানাব।",
+    "rule5": "পরবর্তী ব্যবহারকারীর জন্য রান্নাঘর পরিষ্কার রাখব।",
+    "rule6": "নিয়ম ভঙ্গ করলে শাস্তিমূলক ব্যবস্থা নেওয়া হতে পারে।"
+  },
+  "purpose": {
+    "familyBBQ": "পারিবারিক বিবিকিউ",
+    "birthday": "জন্মদিন",
+    "friendsGathering": "বন্ধুদের সমাবেশ",
+    "teamDinner": "দলের ডিনার",
+    "other": "অন্যান্য"
+  },
+  "dashboard": {
+    "myDashboard": "আমার ড্যাশবোর্ড",
+    "upcomingBookings": "আসন্ন বুকিং",
+    "pastBookings": "অতীত বুকিং",
+    "cancelledBookings": "বাতিল বুকিং",
+    "bookingHistory": "বুকিং ইতিহাস",
+    "noBookings": "কোনো বুকিং পাওয়া যায়নি"
+  },
+  "admin": {
+    "adminDashboard": "অ্যাডমিন ড্যাশবোর্ড",
+    "todayBookings": "আজকের বুকিং",
+    "tomorrowBookings": "আগামীকালের বুকিং",
+    "availableSlots": "উপলব্ধ স্লট",
+    "occupiedSlots": "দখলকৃত স্লট",
+    "totalEmployees": "মোট কর্মচারী",
+    "monthlyBookings": "মাসিক বুকিং",
+    "weeklyBookings": "সাপ্তাহিক বুকিং",
+    "cancelled": "বাতিল",
+    "pending": "মুলতুবি",
+    "completed": "সম্পন্ন",
+    "booked": "বুক করা হয়েছে",
+    "manageEmployees": "কর্মচারী পরিচালনা",
+    "blockDates": "তারিখ ব্লক করুন",
+    "settings": "সেটিংস",
+    "reports": "রিপোর্ট",
+    "analytics": "বিশ্লেষণ"
+  },
+  "status": {
+    "booked": "বুক করা হয়েছে",
+    "completed": "সম্পন্ন",
+    "cancelled": "বাতিল",
+    "noShow": "উপস্থিত হননি"
+  },
+  "calendar": {
+    "monthly": "মাসিক",
+    "weekly": "সাপ্তাহিক",
+    "daily": "দৈনিক",
+    "today": "আজ",
+    "tomorrow": "আগামীকাল",
+    "thisWeek": "এই সপ্তাহ",
+    "thisMonth": "এই মাস"
+  },
+  "reports": {
+    "bookingsByDepartment": "বিভাগ অনুযায়ী বুকিং",
+    "bookingsByEmployee": "কর্মচারী অনুযায়ী বুকিং",
+    "peakHours": "পিক আওয়ার",
+    "mostActiveDepartment": "সবচেয়ে সক্রিয় বিভাগ",
+    "averageGuests": "গড় অতিথি",
+    "kitchenUtilization": "রান্নাঘর ব্যবহার",
+    "monthlyReport": "মাসিক রিপোর্ট",
+    "yearlyReport": "বার্ষিক রিপোর্ট"
+  },
+  "notifications": {
+    "bookingConfirmed": "বুকিং নিশ্চিত",
+    "bookingCancelled": "বুকিং বাতিল",
+    "reminder": "রিমাইন্ডার",
+    "kitchenReady": "রান্নাঘর প্রস্তুত",
+    "bookingFinished": "বুকিং সম্পন্ন"
+  },
+  "employee": {
+    "name": "নাম",
+    "department": "বিভাগ",
+    "designation": "পদ",
+    "phone": "ফোন",
+    "email": "ইমেইল",
+    "status": "অবস্থা",
+    "role": "ভূমিকা",
+    "active": "সক্রিয়",
+    "inactive": "নিষ্ক্রিয়"
+  },
+  "timeSlots": {
+    "08_00": "08:00–10:00",
+    "10_00": "10:00–12:00",
+    "12_00": "12:00–14:00",
+    "14_00": "14:00–16:00",
+    "16_00": "16:00–18:00",
+    "18_00": "18:00–20:00",
+    "20_00": "20:00–22:00"
+  }
+}

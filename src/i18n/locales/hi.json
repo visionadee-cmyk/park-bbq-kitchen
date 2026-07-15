@@ -1,0 +1,152 @@
+{
+  "common": {
+    "appName": "पार्क बीबीक्यू किचन",
+    "loading": "लोड हो रहा है...",
+    "error": "त्रुटि",
+    "success": "सफलता",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "delete": "मिटाएं",
+    "edit": "संपादित करें",
+    "search": "खोजें",
+    "filter": "फ़िल्टर करें",
+    "export": "निर्यात करें",
+    "back": "पीछे",
+    "next": "अगला",
+    "submit": "जमा करें",
+    "confirm": "पुष्टि करें",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "close": "बंद करें",
+    "language": "भाषा"
+  },
+  "auth": {
+    "login": "लॉग इन",
+    "logout": "लॉग आउट",
+    "employeeId": "कर्मचारी आईडी",
+    "password": "पासवर्ड",
+    "forgotPassword": "पासवर्ड भूल गए?",
+    "loginSuccess": "लॉग इन सफल",
+    "loginError": "अमान्य क्रेडेंशियल",
+    "welcomeBack": "वापसी पर स्वागत है",
+    "pleaseSignIn": "जारी रखने के लिए कृपया साइन इन करें"
+  },
+  "booking": {
+    "newBooking": "नई बुकिंग",
+    "bookingDate": "बुकिंग की तारीख",
+    "bookingTime": "बुकिंग का समय",
+    "numberOfGuests": "मेहमानों की संख्या",
+    "purpose": "उद्देश्य",
+    "remarks": "टिप्पणियाँ",
+    "agreement": "किचन समझौता",
+    "agreeToRules": "मैं सभी किचन नियमों से सहमत हूं",
+    "mustAgree": "आपको किचन नियमों से सहमत होना होगा",
+    "bookingSuccess": "बुकिंग सफल",
+    "bookingError": "बुकिंग विफल",
+    "alreadyBooked": "आपके पास इस तारीख के लिए पहले से बुकिंग है",
+    "slotUnavailable": "यह स्लॉट उपलब्ध नहीं है",
+    "maxGuests": "अधिकतम 50 मेहमान",
+    "pastDate": "बीती तारीख नहीं चुन सकते",
+    "maxDaysAhead": "अधिकतम 30 दिन आगे",
+    "selectDate": "तारीख चुनें",
+    "selectSlot": "समय स्लॉट चुनें",
+    "available": "उपलब्ध",
+    "booked": "बुक किया गया"
+  },
+  "agreement": {
+    "title": "किचन उपयोग समझौता",
+    "intro": "मैं किचन के उपयोग के संबंध में निम्नलिखित शर्तों से सहमत हूं।",
+    "rule1": "मैं खाना पकाने के तुरंत बाद किचन साफ करूंगा।",
+    "rule2": "मैं निकलने से पहले सभी बर्तन, पत्तल और उपकरण धो लूंगा।",
+    "rule3": "मैं सभी उपकरणों का सावधानीपूर्वक उपयोग करूंगा।",
+    "rule4": "किसी भी क्षतिग्रस्त उपकरण की सूचना तुरंत दी जाएगी।",
+    "rule5": "मैं अगले उपयोगकर्ता के लिए किचन साफ छोड़ दूंगा।",
+    "rule6": "मैं समझता हूं कि इन नियमों का पालन न करने पर अनुशासनात्मक कार्रवाई हो सकती है।"
+  },
+  "purpose": {
+    "familyBBQ": "पारिवारिक बीबीक्यू",
+    "birthday": "जन्मदिन",
+    "friendsGathering": "दोस्तों का इकट्ठा",
+    "teamDinner": "टीम डिनर",
+    "other": "अन्य"
+  },
+  "dashboard": {
+    "myDashboard": "मेरा डैशबोर्ड",
+    "upcomingBookings": "आगामी बुकिंग",
+    "pastBookings": "पिछली बुकिंग",
+    "cancelledBookings": "रद्द की गई बुकिंग",
+    "bookingHistory": "बुकिंग इतिहास",
+    "noBookings": "कोई बुकिंग नहीं मिली"
+  },
+  "admin": {
+    "adminDashboard": "एडमिन डैशबोर्ड",
+    "todayBookings": "आज की बुकिंग",
+    "tomorrowBookings": "कल की बुकिंग",
+    "availableSlots": "उपलब्ध स्लॉट",
+    "occupiedSlots": "व्यस्त स्लॉट",
+    "totalEmployees": "कुल कर्मचारी",
+    "monthlyBookings": "मासिक बुकिंग",
+    "weeklyBookings": "साप्ताहिक बुकिंग",
+    "cancelled": "रद्द किया गया",
+    "pending": "लंबित",
+    "completed": "पूर्ण",
+    "booked": "बुक किया गया",
+    "manageEmployees": "कर्मचारी प्रबंधन",
+    "blockDates": "तारीख ब्लॉक करें",
+    "settings": "सेटिंग्स",
+    "reports": "रिपोर्ट",
+    "analytics": "विश्लेषण"
+  },
+  "status": {
+    "booked": "बुक किया गया",
+    "completed": "पूर्ण",
+    "cancelled": "रद्द किया गया",
+    "noShow": "नहीं आए"
+  },
+  "calendar": {
+    "monthly": "मासिक",
+    "weekly": "साप्ताहिक",
+    "daily": "दैनिक",
+    "today": "आज",
+    "tomorrow": "कल",
+    "thisWeek": "इस सप्ताह",
+    "thisMonth": "इस महीने"
+  },
+  "reports": {
+    "bookingsByDepartment": "विभाग के अनुसार बुकिंग",
+    "bookingsByEmployee": "कर्मचारी के अनुसार बुकिंग",
+    "peakHours": "पीक आवर्स",
+    "mostActiveDepartment": "सबसे सक्रिय विभाग",
+    "averageGuests": "औसत मेहमान",
+    "kitchenUtilization": "किचन उपयोग",
+    "monthlyReport": "मासिक रिपोर्ट",
+    "yearlyReport": "वार्षिक रिपोर्ट"
+  },
+  "notifications": {
+    "bookingConfirmed": "बुकिंग की पुष्टि",
+    "bookingCancelled": "बुकिंग रद्द",
+    "reminder": "रिमाइंडर",
+    "kitchenReady": "किचन तैयार",
+    "bookingFinished": "बुकिंग समाप्त"
+  },
+  "employee": {
+    "name": "नाम",
+    "department": "विभाग",
+    "designation": "पद",
+    "phone": "फोन",
+    "email": "ईमेल",
+    "status": "स्थिति",
+    "role": "भूमिका",
+    "active": "सक्रिय",
+    "inactive": "निष्क्रिय"
+  },
+  "timeSlots": {
+    "08_00": "08:00–10:00",
+    "10_00": "10:00–12:00",
+    "12_00": "12:00–14:00",
+    "14_00": "14:00–16:00",
+    "16_00": "16:00–18:00",
+    "18_00": "18:00–20:00",
+    "20_00": "20:00–22:00"
+  }
+}
