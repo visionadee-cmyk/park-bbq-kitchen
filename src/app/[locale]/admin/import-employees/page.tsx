@@ -96,12 +96,19 @@ export default function ImportEmployeesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center space-x-4">
-          <Button variant="ghost" size="sm" onClick={() => router.push('/admin')}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('common.back')} {t('admin.adminDashboard')}
-          </Button>
-          <h1 className="text-lg sm:text-xl font-semibold">{t('admin.manageEmployees')}</h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="sm" onClick={() => router.push('/admin')}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('common.back')} {t('admin.adminDashboard')}
+            </Button>
+            <h1 className="text-lg sm:text-xl font-semibold">{t('admin.manageEmployees')}</h1>
+          </div>
+          <img 
+            src="/storyset/Barbecue-amico.svg" 
+            alt="BBQ Illustration" 
+            className="h-12 w-auto hidden sm:block"
+          />
         </div>
       </header>
 

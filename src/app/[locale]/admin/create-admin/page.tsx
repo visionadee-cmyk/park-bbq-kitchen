@@ -95,87 +95,96 @@ export default function CreateAdminPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
-      <div className="max-w-md mx-auto">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => router.push('/admin')}
-          className="mb-4"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          {t('common.back')} {t('admin.adminDashboard')}
-        </Button>
+      <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-6 items-center">
+        <div className="w-full md:w-1/2 flex justify-center">
+          <img 
+            src="/storyset/Barbecue-bro.svg" 
+            alt="BBQ Illustration" 
+            className="w-full max-w-md h-auto"
+          />
+        </div>
+        <div className="w-full max-w-md">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push('/admin')}
+            className="mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {t('common.back')} {t('admin.adminDashboard')}
+          </Button>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl">{t('adminAuth.adminLogin')}</CardTitle>
-            <CardDescription>
-              {t('admin.manageEmployees')}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleCreateAdmin} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="employeeId">{t('auth.employeeId')}</Label>
-                <Input
-                  id="employeeId"
-                  value={employeeId}
-                  onChange={(e) => setEmployeeId(e.target.value)}
-                  placeholder="e.g., villa-park_13011"
-                  required
-                />
-                <p className="text-xs text-gray-500">
-                  Use an existing employee ID from your list
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">{t('employee.email')} ({t('common.loading')})</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="e.g., admin@example.com"
-                />
-                <p className="text-xs text-gray-500">
-                  {t('bookingForm.department')} {t('employee.email')} {t('auth.employeeId')}
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">{t('auth.password')}</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder={t('auth.password')}
-                  required
-                />
-              </div>
-              {error && (
-                <div className="text-sm text-red-500">{error}</div>
-              )}
-              {success && (
-                <div className="text-sm text-green-600 bg-green-50 p-3 rounded">
-                  {success}
-                  <div className="mt-2">
-                    <strong>{t('adminAuth.adminLogin')}:</strong><br />
-                    {t('auth.employeeId')}: {employeeId}<br />
-                    {t('auth.password')}: {password}<br />
-                    {email && <>{t('employee.email')}: {email}<br /></>}
-                  </div>
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-2xl">{t('adminAuth.adminLogin')}</CardTitle>
+              <CardDescription>
+                {t('admin.manageEmployees')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleCreateAdmin} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="employeeId">{t('auth.employeeId')}</Label>
+                  <Input
+                    id="employeeId"
+                    value={employeeId}
+                    onChange={(e) => setEmployeeId(e.target.value)}
+                    placeholder="e.g., villa-park_13011"
+                    required
+                  />
+                  <p className="text-xs text-gray-500">
+                    Use an existing employee ID from your list
+                  </p>
                 </div>
-              )}
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={loading}
-              >
-                {loading ? t('common.loading') : t('admin.manageEmployees')}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+                <div className="space-y-2">
+                  <Label htmlFor="email">{t('employee.email')} ({t('common.loading')})</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="e.g., admin@example.com"
+                  />
+                  <p className="text-xs text-gray-500">
+                    {t('bookingForm.department')} {t('employee.email')} {t('auth.employeeId')}
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="password">{t('auth.password')}</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder={t('auth.password')}
+                    required
+                  />
+                </div>
+                {error && (
+                  <div className="text-sm text-red-500">{error}</div>
+                )}
+                {success && (
+                  <div className="text-sm text-green-600 bg-green-50 p-3 rounded">
+                    {success}
+                    <div className="mt-2">
+                      <strong>{t('adminAuth.adminLogin')}:</strong><br />
+                      {t('auth.employeeId')}: {employeeId}<br />
+                      {t('auth.password')}: {password}<br />
+                      {email && <>{t('employee.email')}: {email}<br /></>}
+                    </div>
+                  </div>
+                )}
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={loading}
+                >
+                  {loading ? t('common.loading') : t('admin.manageEmployees')}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );

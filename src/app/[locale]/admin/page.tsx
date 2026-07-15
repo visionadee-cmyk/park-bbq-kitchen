@@ -203,6 +203,11 @@ export default function AdminPage() {
             </div>
           </div>
           <div className="flex items-center space-x-2">
+            <img 
+              src="/storyset/Camping-bro.svg" 
+              alt="BBQ Illustration" 
+              className="h-12 w-auto hidden sm:block"
+            />
             <LanguageSelector />
             <Button variant="outline" size="sm" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />

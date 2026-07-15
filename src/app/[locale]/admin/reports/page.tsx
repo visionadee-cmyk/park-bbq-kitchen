@@ -120,10 +120,17 @@ export default function AdminReportsPage() {
             <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-10 w-auto" />
             <h1 className="text-2xl font-bold">{t('admin.adminDashboard')}</h1>
           </div>
-          <Button onClick={exportToExcel}>
-            <Download className="w-4 h-4 mr-2" />
-            {t('common.export')}
-          </Button>
+          <div className="flex items-center space-x-4">
+            <img 
+              src="/storyset/Barbecue-bro.svg" 
+              alt="BBQ Illustration" 
+              className="h-12 w-auto hidden sm:block"
+            />
+            <Button onClick={exportToExcel}>
+              <Download className="w-4 h-4 mr-2" />
+              {t('common.export')}
+            </Button>
+          </div>
         </div>
       </header>
 

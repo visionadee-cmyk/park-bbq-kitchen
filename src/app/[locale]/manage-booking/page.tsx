@@ -7,9 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { getBookingByCredentials, cancelBooking, requestBookingChange } from '@/lib/bookings';
-import { ArrowLeft, Calendar as CalendarIcon, Clock, Users, AlertCircle, Edit } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import { getBookingByCredentials, cancelBooking, requestBookingChange, updateBooking } from '@/lib/bookings';
+import { ArrowLeft, Calendar as CalendarIcon, Clock, Users, AlertCircle, Edit, Upload, CheckCircle } from 'lucide-react';
 import { format } from 'date-fns';
+import { uploadToCloudinary } from '@/lib/cloudinaryUpload';
 
 export default function ManageBookingPage() {
   const t = useTranslations();
@@ -24,6 +26,20 @@ export default function ManageBookingPage() {
   const [requestedDate, setRequestedDate] = useState('');
   const [requestedSlot, setRequestedSlot] = useState('');
   const [changeReason, setChangeReason] = useState('');
+  
+  // Kitchen checklist items
+  const [checklistItems, setChecklistItems] = useState({
+    kitchenCleaned: false,
+    equipmentReturned: false,
+    gasTurnedOff: false,
+    trashDisposed: false,
+    surfacesWiped: false,
+  });
+  
+  // Kitchen image upload
+  const [kitchenImage, setKitchenImage] = useState<File | null>(null);
+  const [kitchenImagePreview, setKitchenImagePreview] = useState<string>('');
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
 
   const TIME_SLOTS = [
     '08:00–10:00',
@@ -107,15 +123,77 @@ export default function ManageBookingPage() {
     }
   };
 
+  const handleChecklistChange = (item: string, checked: boolean) => {
+    setChecklistItems(prev => ({
+      ...prev,
+      [item]: checked
+    }));
+  };
+
+  const handleKitchenImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setKitchenImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setKitchenImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleCompleteBooking = async () => {
+    if (!Object.values(checklistItems).every(item => item)) {
+      setError('Please complete all checklist items before finishing.');
+      return;
+    }
+
+    if (!kitchenImage) {
+      setError('Please upload a kitchen image before finishing.');
+      return;
+    }
+
+    setIsUploadingImage(true);
+    try {
+      // Upload kitchen image to Cloudinary
+      const imageUrl = await uploadToCloudinary(kitchenImage, 'kitchen-images');
+      
+      // Update booking with checklist and image
+      await updateBooking(booking.id, {
+        checklist: checklistItems,
+        kitchenImage: imageUrl,
+        status: 'completed'
+      });
+
+      alert('Booking completed successfully!');
+      
+      // Refresh booking data
+      const result = await getBookingByCredentials(bookingNumber, bookingPassword);
+      setBooking(result);
+    } catch (err) {
+      console.error('Error completing booking:', err);
+      setError('Failed to complete booking. Please try again.');
+    } finally {
+      setIsUploadingImage(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center space-x-4">
-          <Button variant="ghost" size="sm" onClick={() => router.push('/')}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('common.back')}
-          </Button>
-          <h1 className="text-lg sm:text-xl font-semibold">{t('home.manageBooking')}</h1>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="sm" onClick={() => router.push('/')}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('common.back')}
+            </Button>
+            <h1 className="text-lg sm:text-xl font-semibold">{t('home.manageBooking')}</h1>
+          </div>
+          <img 
+            src="/storyset/Barbecue-rafiki.svg" 
+            alt="BBQ Illustration" 
+            className="h-12 w-auto hidden sm:block"
+          />
         </div>
       </header>
 
@@ -263,6 +341,75 @@ export default function ManageBookingPage() {
                     <h4 className="font-semibold text-red-900 mb-2">{t('status.cancelled')}</h4>
                     <p className="text-sm text-red-800">{t('booking.purpose')}: {booking.changeRequestReason}</p>
                   </div>
+                )}
+
+                {/* Kitchen Completion Checklist */}
+                {booking.status === 'booked' && booking.approvalStatus === 'approved' && (
+                  <Card className="mt-4 border-blue-200 bg-blue-50">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-base font-semibold flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2" />
+                        Kitchen Completion Checklist
+                      </CardTitle>
+                      <CardDescription className="text-xs">
+                        Complete all items and upload kitchen image to finish booking
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        {Object.entries({
+                          kitchenCleaned: 'Kitchen cleaned thoroughly',
+                          equipmentReturned: 'All equipment returned to proper place',
+                          gasTurnedOff: 'Gas turned off completely',
+                          trashDisposed: 'All trash disposed properly',
+                          surfacesWiped: 'All surfaces wiped down'
+                        }).map(([key, label]) => (
+                          <div key={key} className="flex items-center space-x-2">
+                            <Checkbox
+                              id={key}
+                              checked={checklistItems[key as keyof typeof checklistItems]}
+                              onCheckedChange={(checked) => 
+                                handleChecklistChange(key, checked as boolean)
+                              }
+                            />
+                            <Label htmlFor={key} className="text-sm cursor-pointer">
+                              {label}
+                            </Label>
+                          </div>
+                        ))}
+
+                        {/* Kitchen Image Upload */}
+                        <div className="mt-4 space-y-2">
+                          <Label className="text-sm font-medium">Upload Kitchen Image</Label>
+                          <div className="flex items-center space-x-2">
+                            <Input
+                              type="file"
+                              accept="image/*"
+                              onChange={handleKitchenImageChange}
+                              className="flex-1"
+                            />
+                            {kitchenImagePreview && (
+                              <div className="w-16 h-16 rounded-lg overflow-hidden border">
+                                <img
+                                  src={kitchenImagePreview}
+                                  alt="Kitchen preview"
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        <Button
+                          onClick={handleCompleteBooking}
+                          disabled={isUploadingImage || !Object.values(checklistItems).every(item => item) || !kitchenImage}
+                          className="w-full mt-2"
+                        >
+                          {isUploadingImage ? t('common.loading') : 'Complete Booking'}
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
                 )}
 
                 {booking.status === 'booked' && (

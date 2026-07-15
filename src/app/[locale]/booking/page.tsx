@@ -10,8 +10,10 @@ import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import SignaturePad from '@/components/SignaturePad';
 import { createBooking, getAvailableSlots, getBookingsByDate } from '@/lib/bookings';
 import { searchEmployees } from '@/lib/employees';
+import { uploadToCloudinary } from '@/lib/cloudinaryUpload';
 import { addDays, format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isWeekend } from 'date-fns';
 import { ArrowLeft, ChevronLeft, ChevronRight, Calendar as CalendarIcon, Clock, Users, X } from 'lucide-react';
 
@@ -37,6 +39,8 @@ export default function BookingPage() {
   const [showNameDropdown, setShowNameDropdown] = useState(false);
   const [nameSearchResults, setNameSearchResults] = useState<any[]>([]);
   const [isSearchingName, setIsSearchingName] = useState(false);
+  const [signature, setSignature] = useState<string | null>(null);
+  const [showSignatureModal, setShowSignatureModal] = useState(false);
 
   const TIME_SLOTS = [
     '08:00–10:00',
@@ -160,12 +164,30 @@ export default function BookingPage() {
       return;
     }
 
+    // Show signature modal if not signed yet
+    if (!signature) {
+      setShowSignatureModal(true);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
       if (!employeeId || !employeeName || !department) {
         setError('Please fill in employee information');
         return;
+      }
+
+      // Upload signature to Cloudinary
+      let signatureUrl = '';
+      if (signature) {
+        try {
+          signatureUrl = await uploadToCloudinary(signature, 'signatures');
+        } catch (uploadError) {
+          console.error('Signature upload error:', uploadError);
+          setError('Failed to upload signature. Please try again.');
+          return;
+        }
       }
 
       const bookingData = {
@@ -178,6 +200,7 @@ export default function BookingPage() {
         purpose,
         remarks,
         agreement: true,
+        signature: signatureUrl,
       };
 
       console.log('Creating booking with data:', bookingData);
@@ -301,7 +324,14 @@ export default function BookingPage() {
             </Button>
             <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-8 w-auto sm:h-10" />
           </div>
-          <LanguageSelector />
+          <div className="flex items-center space-x-4">
+            <img 
+              src="/storyset/Barbecue-bro.svg" 
+              alt="BBQ Illustration" 
+              className="h-12 w-auto hidden sm:block"
+            />
+            <LanguageSelector />
+          </div>
         </div>
       </header>
 
@@ -581,6 +611,54 @@ export default function BookingPage() {
               </div>
             </CardContent>
           </Card>
+        )}
+
+        {/* Signature Modal */}
+        {showSignatureModal && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+            <Card className="w-full max-w-md">
+              <CardHeader>
+                <CardTitle className="text-lg sm:text-xl">Sign Kitchen Use Agreement</CardTitle>
+                <CardDescription className="text-sm">
+                  Please sign below to confirm you agree to the kitchen use agreement
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <SignaturePad 
+                    onSignatureChange={setSignature}
+                    width={350}
+                    height={200}
+                  />
+                  <div className="flex gap-2">
+                    <Button
+                      onClick={() => {
+                        if (signature) {
+                          setShowSignatureModal(false);
+                          // Submit the form after signature
+                          document.querySelector('form')?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                        }
+                      }}
+                      disabled={!signature}
+                      className="flex-1"
+                    >
+                      Confirm & Submit
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setShowSignatureModal(false);
+                        setSignature(null);
+                      }}
+                      variant="outline"
+                      className="flex-1"
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         )}
       </main>
     </div>

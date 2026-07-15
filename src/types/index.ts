@@ -31,6 +31,15 @@ export interface Booking {
   requestedDate?: string;
   requestedSlot?: string;
   changeRequestReason?: string;
+  signature?: string;
+  checklist?: {
+    kitchenCleaned: boolean;
+    equipmentReturned: boolean;
+    gasTurnedOff: boolean;
+    trashDisposed: boolean;
+    surfacesWiped: boolean;
+  };
+  kitchenImage?: string;
   createdAt: Date;
   updatedAt: Date;
 }

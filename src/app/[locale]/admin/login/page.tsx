@@ -56,72 +56,81 @@ export default function AdminLoginPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => router.push('/')}
-          className="mb-4"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          {t('common.back')}
-        </Button>
+      <div className="w-full max-w-4xl flex flex-col md:flex-row gap-6 items-center">
+        <div className="w-full md:w-1/2 flex justify-center">
+          <img 
+            src="/storyset/Barbecue-pana (1).svg" 
+            alt="BBQ Illustration" 
+            className="w-full max-w-md h-auto"
+          />
+        </div>
+        <div className="w-full max-w-md">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => router.push('/')}
+            className="mb-4"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {t('common.back')}
+          </Button>
 
-        <Card>
-          <CardHeader className="text-center">
-            <div className="mx-auto mb-4">
-              <img 
-                src="/logo/kitchen image.jpg" 
-                alt="Park BBQ Kitchen" 
-                className="w-32 h-32 object-cover rounded-full mx-auto"
-              />
-            </div>
-            <CardTitle className="text-2xl">{t('adminAuth.adminLogin')}</CardTitle>
-            <CardDescription className="text-base">
-              {t('adminAuth.enterAdminEmail')}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm">{t('employee.email')}</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder={t('employee.email')}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="text-base"
+          <Card>
+            <CardHeader className="text-center">
+              <div className="mx-auto mb-4">
+                <img 
+                  src="/logo/kitchen image.jpg" 
+                  alt="Park BBQ Kitchen" 
+                  className="w-32 h-32 object-cover rounded-full mx-auto"
                 />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm">{t('auth.password')}</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  placeholder={t('auth.password')}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  className="text-base"
-                />
-              </div>
-              {error && (
-                <div className="text-sm text-red-500 text-center">
-                  {error}
+              <CardTitle className="text-2xl">{t('adminAuth.adminLogin')}</CardTitle>
+              <CardDescription className="text-base">
+                {t('adminAuth.enterAdminEmail')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm">{t('employee.email')}</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder={t('employee.email')}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="text-base"
+                  />
                 </div>
-              )}
-              <Button
-                type="submit"
-                className="w-full py-3 text-base"
-                disabled={isLoading}
-              >
-                {isLoading ? t('common.loading') : t('adminAuth.adminLogin')}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-sm">{t('auth.password')}</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder={t('auth.password')}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="text-base"
+                  />
+                </div>
+                {error && (
+                  <div className="text-sm text-red-500 text-center">
+                    {error}
+                  </div>
+                )}
+                <Button
+                  type="submit"
+                  className="w-full py-3 text-base"
+                  disabled={isLoading}
+                >
+                  {isLoading ? t('common.loading') : t('adminAuth.adminLogin')}
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );

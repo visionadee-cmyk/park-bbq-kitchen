@@ -45,8 +45,8 @@
     "mustAgree": "ކިޗަންގެ ގަވާއިދުތަކަށް އެއްބަސްވާން ޖެހޭނެ",
     "bookingSuccess": "ބުކިންގ ކާމިޔާބު",
     "bookingError": "ބުކިންގ ފެއިލްވެއްޖެ",
-    "alreadyBooked": "މި ތާރީޚްގައި ތިބާގެ ބުކިންގ އެއް އޮތް",
-    "slotUnavailable": "މި ވަގުތު ހުހެއް ނެތް",
+    "alreadyBooked": "މި ތާރީޚްގައި ބުކިންގ އެބައޮއް",
+    "slotUnavailable": "މި ވަގުތު ހުހެއް ނޫން",
     "maxGuests": "ގިނަވެގެން 50 މީހުން",
     "pastDate": "ހިނގާދިޔަ ތާރީޚްތައް ނުނެގޭނެ",
     "maxDaysAhead": "ގިނަވެގެން 30 ދުވަސް ކުރިއަށް",
@@ -74,11 +74,11 @@
   },
   "dashboard": {
     "myDashboard": "މަ ޑޭޝްބޯޑް",
-    "upcomingBookings": "ކުެއްވި ބުކިންގތައް",
-    "pastBookings": "ފަހުގެ ބުކިންގތައް",
+    "upcomingBookings": "އަންނަން ހުރި ބުކިންގތައް",
+    "pastBookings": "ކުރީގެ ބުކިންގތައް",
     "cancelledBookings": "ކެންސަލް ކުރެވިފައިވާ ބުކިންގތައް",
     "bookingHistory": "ބުކިންގގެ ތާރީޚް",
-    "noBookings": "ބުކިންގތައް ނުފެންނަ"
+    "noBookings": "ބުކިންގއެއް ނެތް"
   },
   "admin": {
     "adminDashboard": "އެޑްމިން ޑޭޝްބޯޑް",
@@ -90,10 +90,10 @@
     "monthlyBookings": "މަހުގެ ބުކިންގތައް",
     "weeklyBookings": "ހަފްތާގެ ބުކިންގތައް",
     "cancelled": "ކެންސަލް ކުރެވިފައި",
-    "pending": "ހުކުރުގައި",
-    "completed": "ނިންމި",
+    "pending": "ހުއްދައަށް އެދިފާ",
+    "completed": "ނިމިފަ",
     "booked": "ބުކްކުރެވިފައި",
-    "manageEmployees": "ވަޒީފާގެ މީހުން މެނޭޖް ކުރުން",
+    "manageEmployees": "މުވައްޒަފުން މެނޭޖުކުރުން މެނޭޖް ކުރުން",
     "blockDates": "ދުވަސްތައް ބްލޮކް ކުރުން",
     "settings": "ސެޓިންގސް",
     "reports": "ރިޕޯޓްތައް",
@@ -101,9 +101,9 @@
   },
   "status": {
     "booked": "ބުކްކުރެވިފައި",
-    "completed": "ނިންމި",
+    "completed": "ނިމިފާ",
     "cancelled": "ކެންސަލް ކުރެވިފައި",
-    "noShow": "ނުދެވުނު"
+    "noShow": "ބޭނުން ނުކުރެ"
   },
   "calendar": {
     "monthly": "މަހުގެ",
@@ -113,18 +113,18 @@
     "tomorrow": "މާދަމާ",
     "thisWeek": "މިހަފްތާ",
     "thisMonth": "މިމަހު",
-    "weekend": "ހަފްތާގެ ފަހު",
-    "past": "ހިނގާދިޔަ",
-    "unavailable": "ލިބެންހުރި",
-    "allAvailable": "ހުޅުވިފައިވާ ހުރިހާ",
-    "limited": "ސީމިތު",
-    "fullyBooked": "ފުޅުވެފައިވާ",
+    "weekend": "ހަފްތާ ނިމުން",
+    "past": "ފާއިތުވެ ގޮސްފައި",
+    "unavailable": "ލިބެންނެތް",
+    "allAvailable": "ހުޅުވިފައިވާ",
+    "limited": "ވަކި ވަރަކަށް",
+    "fullyBooked": "ފުލްވެފައިވާ",
     "selected": "ހިޔާރުކުރެވިފައި"
   },
   "reports": {
     "bookingsByDepartment": "ޑިޕާޓްމަންޓް އިން ބުކިންގތައް",
-    "bookingsByEmployee": "ވަޒީފާގެ މީހުންނިން ބުކިންގތައް",
-    "peakHours": "އެންމެ ބަސް ވަގުތުތައް",
+    "bookingsByEmployee": "މުވައްޒަފުންގެ ބުކިންތައް",
+    "peakHours": "އެންމެ ބިޒީ ވަގުތުތައް",
     "mostActiveDepartment": "އެންމެ އެކްޓިވް ޑިޕާޓްމަންޓް",
     "averageGuests": "އެވެރޭޖް މީހުން",
     "kitchenUtilization": "ކިޗަން ބޭނުންކުރުން",
@@ -132,10 +132,10 @@
     "yearlyReport": "އަހަރުގެ ރިޕޯޓް"
   },
   "notifications": {
-    "bookingConfirmed": "ބުކިންގ ޔަޤުންނަވައިފި",
+    "bookingConfirmed": "ބުކިންގ ކަށަވަރު ވެއްޖޭ",
     "bookingCancelled": "ބުކިންގ ކެންސަލް ކުރެވިއްޖެ",
-    "reminder": "ރިމައިންޑަރ",
-    "kitchenReady": "ކިޗަން ހުޅުވިއްޖެ",
+    "reminder": "ހަނދާން ކޮއްދިނުން",
+    "kitchenReady": "ކިޗަން ހުޅުވިފާ",
     "bookingFinished": "ބުކިންގ ނިމިއްޖެ"
   },
   "employee": {
@@ -165,14 +165,14 @@
   },
   "adminAuth": {
     "adminLogin": "އެޑްމިން ލޮގިން",
-    "adminAccessOnly": "އެޑްމިން މަންވަރަށް އެކްސެސް",
-    "enterAdminEmail": "ޑޭޝްބޯޑަށް ވަދެވޭގޮތަށް ތިބާގެ އެޑްމިން އީމެއިލާއި ޕާސްވޯޑް އުފުލާފައިވާ"
+    "adminAccessOnly": "އެޑްމިންއަށް އެކަނި",
+    "enterAdminEmail": "ޑޭޝްބޯޑަށް ވަދެވޭގޮތަށް ތިބާގެ އެޑްމިން އީމެއިލާއި ޕާސްވޯޑް ޖައްސަވާ"
   },
   "bookingForm": {
-    "fullNameOrEmployeeId": "ފުން ނަން / ވަޒީފާގެ މީހުން އައިޑީ",
-    "typeNameOrEmployeeId": "ހޯދަން ނަން ނުވަތަ ވަޒީފާގެ މީހުން އައިޑީ ލިޔޭ",
+    "fullNameOrEmployeeId": " ނަން / ވަޒީފާގެ އައިޑީ",
+    "typeNameOrEmployeeId": "ހޯދަން ނަން ނުވަތަ އައިޑީ ނަމްބަރ ލިޔުއްވާ",
     "department": "ޑިޕާޓްމަންޓް",
-    "pleaseFillEmployeeInfo": "ވަޒީފާގެ މީހުންގެ މަޢުލޫމާތު ހުރިހާ ލިބުން",
+    "pleaseFillEmployeeInfo": "މަޢުލޫމާތު ފުރާލައްވާ",
     "bookingNumber": "ބުކިންގ ނަންބަރު",
     "bookingPassword": "ބުކިންގ ޕާސްވޯޑް",
     "copyCredentials": "ކްރެޑެންޝަލްސް ކޮޕީ ކުރޭ",
@@ -183,10 +183,10 @@
   },
   "manageBooking": {
     "findYourBooking": "ތިބާގެ ބުކިންގ ހޯދަން",
-    "enterBookingCredentials": "ތިބާގެ ބުކިންގ ހޯދަން ބުކިންގ ނަންބަރުއާއި ޕާސްވޯޑް އުފުލާފައިވާ",
-    "invalidCredentials": "ހުރިހާ ނޫން ބުކިންގ ނަންބަރު ނުވަތަ ޕާސްވޯޑް",
+    "enterBookingCredentials": "ތިބާގެ ބުކިންގ ހޯދަން ބުކިންގ ނަންބަރުއާއި ޕާސްވޯޑް ޖައްސަވާ",
+    "invalidCredentials": "ބުކިންގ ނަންބަރު ނުވަތަ ޕާސްވޯޑް ނުބައި",
     "cancelBookingFailed": "ބުކިންގ ކެންސަލް ކުރެވޭން ނެތް. އަލުން މަސައްކުރޭ.",
-    "requestChange": "ބަދަލު ހޯދަން",
+    "requestChange": "ބަދަލު ކުރަން",
     "cancelBooking": "ބުކިންގ ކެންސަލް ކުރޭ"
   }
 }

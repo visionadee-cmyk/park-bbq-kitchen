@@ -78,6 +78,11 @@ export default function AdminCalendarPage() {
             <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-10 w-auto" />
             <h1 className="text-2xl font-bold">{t('admin.adminDashboard')}</h1>
           </div>
+          <img 
+            src="/storyset/Barbecue-rafiki.svg" 
+            alt="BBQ Illustration" 
+            className="h-12 w-auto hidden sm:block"
+          />
         </div>
       </header>
 

@@ -74,6 +74,11 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
+            <img 
+              src="/storyset/Barbecue-pana.svg" 
+              alt="BBQ Illustration" 
+              className="h-12 w-auto hidden sm:block"
+            />
             <LanguageSelector />
             <Button variant="outline" onClick={handleLogout}>
               <LogOut className="w-4 h-4 mr-2" />
