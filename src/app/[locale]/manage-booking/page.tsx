@@ -368,8 +368,8 @@ export default function ManageBookingPage() {
                             <Checkbox
                               id={key}
                               checked={checklistItems[key as keyof typeof checklistItems]}
-                              onCheckedChange={(checked) => 
-                                handleChecklistChange(key, checked as boolean)
+                              onCheckedChange={(checked: boolean) => 
+                                handleChecklistChange(key, checked)
                               }
                             />
                             <Label htmlFor={key} className="text-sm cursor-pointer">
