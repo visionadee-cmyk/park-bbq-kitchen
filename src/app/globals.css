@@ -4,14 +4,10 @@
 
 @font-face {
   font-family: 'Dhivehi';
-  src: url('/fonts/Dhivehi.ttf') format('truetype');
-  font-weight: normal;
+  src:url('/fonts/Dhivehi.ttf') format('truetype');
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
-}
-
-.font-dhivehi {
-  font-family: 'Dhivehi', sans-serif;
 }
 
 @layer base {
@@ -67,5 +63,25 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Dhivehi font application */
+  .font-dhivehi {
+    font-family: 'Dhivehi', sans-serif !important;
+  }
+  
+  html[lang="dv"] body {
+    font-family: 'Dhivehi', sans-serif !important;
+  }
+  
+  html[lang="dv"] body *,
+  html[lang="dv"] * {
+    font-family: 'Dhivehi', sans-serif !important;
+  }
+  
+  /* Override any Tailwind font classes for Dhivehi */
+  html[lang="dv"] .font-sans,
+  html[lang="dv"] [class*="font-"] {
+    font-family: 'Dhivehi', sans-serif !important;
   }
 }

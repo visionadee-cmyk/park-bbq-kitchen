@@ -18,7 +18,9 @@
     "yes": "Yes",
     "no": "No",
     "close": "Close",
-    "language": "Language"
+    "language": "Language",
+    "required": "required",
+    "pleaseSignIn": "Please sign in to continue"
   },
   "auth": {
     "login": "Login",
@@ -110,7 +112,14 @@
     "today": "Today",
     "tomorrow": "Tomorrow",
     "thisWeek": "This Week",
-    "thisMonth": "This Month"
+    "thisMonth": "This Month",
+    "weekend": "Weekend",
+    "past": "Past",
+    "unavailable": "Unavailable",
+    "allAvailable": "All available",
+    "limited": "Limited",
+    "fullyBooked": "Fully booked",
+    "selected": "Selected"
   },
   "reports": {
     "bookingsByDepartment": "Bookings by Department",
@@ -148,5 +157,36 @@
     "16_00": "16:00–18:00",
     "18_00": "18:00–20:00",
     "20_00": "20:00–22:00"
+  },
+  "home": {
+    "bookNow": "Book Now",
+    "manageBooking": "Manage Booking",
+    "selectLanguage": "Select Language"
+  },
+  "adminAuth": {
+    "adminLogin": "Admin Login",
+    "adminAccessOnly": "Admin access only",
+    "enterAdminEmail": "Enter your admin email and password to access the dashboard"
+  },
+  "bookingForm": {
+    "fullNameOrEmployeeId": "Full Name / Employee ID",
+    "typeNameOrEmployeeId": "Type name or employee ID to search",
+    "department": "Department",
+    "pleaseFillEmployeeInfo": "Please fill in employee information",
+    "bookingNumber": "Booking Number",
+    "bookingPassword": "Booking Password",
+    "copyCredentials": "Copy Credentials",
+    "goToHome": "Go to Home",
+    "credentialsCopied": "Credentials copied to clipboard!",
+    "bookingSuccessful": "Booking Successful!",
+    "saveYourCredentials": "Please save your booking credentials to manage your booking later"
+  },
+  "manageBooking": {
+    "findYourBooking": "Find Your Booking",
+    "enterBookingCredentials": "Enter your booking number and password to find your booking",
+    "invalidCredentials": "Invalid booking number or password",
+    "cancelBookingFailed": "Failed to cancel booking. Please try again.",
+    "requestChange": "Request Change",
+    "cancelBooking": "Cancel Booking"
   }
 }

@@ -10,6 +10,7 @@ import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { Search, LogOut, Users, Calendar, TrendingUp, Clock, X, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getAllBookings, getBookingStats, cancelBooking, deleteBooking, approveBookingChange, rejectBookingChange } from '@/lib/bookings';
 import { logBookingCancelled, logBookingDeleted } from '@/lib/auditLog';
@@ -201,10 +202,13 @@ export default function AdminPage() {
               <p className="text-xs sm:text-sm text-gray-600">{t('admin.adminDashboard')}</p>
             </div>
           </div>
-          <Button variant="outline" size="sm" onClick={handleLogout}>
-            <LogOut className="w-4 h-4 mr-2" />
-            <span className="hidden sm:inline">{t('auth.logout')}</span>
-          </Button>
+          <div className="flex items-center space-x-2">
+            <LanguageSelector />
+            <Button variant="outline" size="sm" onClick={handleLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
+              <span className="hidden sm:inline">{t('auth.logout')}</span>
+            </Button>
+          </div>
         </div>
       </header>
 

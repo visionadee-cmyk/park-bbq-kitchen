@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { addEmployeeToFirestore } from '@/lib/employees';
@@ -8,6 +9,7 @@ import { ArrowLeft } from 'lucide-react';
 import { useRouter } from '@/i18n/navigation';
 
 export default function ImportEmployeesPage() {
+  const t = useTranslations();
   const router = useRouter();
   const [isImporting, setIsImporting] = useState(false);
   const [progress, setProgress] = useState({ current: 0, total: 0, success: 0, failed: 0 });
@@ -97,9 +99,9 @@ export default function ImportEmployeesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center space-x-4">
           <Button variant="ghost" size="sm" onClick={() => router.push('/admin')}>
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Admin
+            {t('common.back')} {t('admin.adminDashboard')}
           </Button>
-          <h1 className="text-lg sm:text-xl font-semibold">Import Employees</h1>
+          <h1 className="text-lg sm:text-xl font-semibold">{t('admin.manageEmployees')}</h1>
         </div>
       </header>
 

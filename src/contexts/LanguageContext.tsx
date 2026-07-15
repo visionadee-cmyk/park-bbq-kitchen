@@ -23,9 +23,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState('en');
 
   useEffect(() => {
-    const storedLang = localStorage.getItem('language');
-    if (storedLang) {
-      setLanguage(storedLang);
+    // Extract locale from URL pathname
+    const pathname = window.location.pathname;
+    const localeMatch = pathname.match(/^\/([a-z]{2})/);
+    if (localeMatch) {
+      const currentLocale = localeMatch[1];
+      setLanguage(currentLocale);
+      localStorage.setItem('language', currentLocale);
     }
   }, []);
 

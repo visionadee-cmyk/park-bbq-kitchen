@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { createBooking, getAvailableSlots, getBookingsByDate } from '@/lib/bookings';
 import { searchEmployees } from '@/lib/employees';
 import { addDays, format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isWeekend } from 'date-fns';
@@ -265,7 +266,7 @@ export default function BookingPage() {
               {format(day, 'd')}
             </span>
             {isWeekendDay && !isSelected && (
-              <span className="text-xs text-gray-400 hidden sm:block">Weekend</span>
+              <span className="text-xs text-gray-400 hidden sm:block">{t('calendar.weekend')}</span>
             )}
           </div>
           {!isPast && !isTooFar && (
@@ -277,10 +278,10 @@ export default function BookingPage() {
             </div>
           )}
           {isPast && (
-            <div className="text-xs text-gray-400 mt-1 sm:mt-2">Past</div>
+            <div className="text-xs text-gray-400 mt-1 sm:mt-2">{t('calendar.past')}</div>
           )}
           {isTooFar && (
-            <div className="text-xs text-gray-400 mt-1 sm:mt-2">Unavailable</div>
+            <div className="text-xs text-gray-400 mt-1 sm:mt-2">{t('calendar.unavailable')}</div>
           )}
         </div>
       );
@@ -292,12 +293,15 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center space-x-4">
-          <Button variant="ghost" size="sm" onClick={() => router.push('/')}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            {t('common.back')}
-          </Button>
-          <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-8 w-auto sm:h-10" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="sm" onClick={() => router.push('/')}>
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              {t('common.back')}
+            </Button>
+            <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-8 w-auto sm:h-10" />
+          </div>
+          <LanguageSelector />
         </div>
       </header>
 
@@ -311,23 +315,23 @@ export default function BookingPage() {
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="space-y-2">
-                  <Label className="text-sm">Employee ID</Label>
+                  <Label className="text-sm">{t('auth.employeeId')}</Label>
                   <Input
                     value={employeeId}
                     onChange={(e) => setEmployeeId(e.target.value)}
-                    placeholder="Employee ID"
+                    placeholder={t('auth.employeeId')}
                     required
                     className="text-base"
                   />
                 </div>
 
                 <div className="space-y-2 relative">
-                  <Label className="text-sm">Full Name / Employee ID</Label>
+                  <Label className="text-sm">{t('bookingForm.fullNameOrEmployeeId')}</Label>
                   <div className="relative">
                     <Input
                       value={employeeName}
                       onChange={(e) => setEmployeeName(e.target.value)}
-                      placeholder="Type name or employee ID to search"
+                      placeholder={t('bookingForm.typeNameOrEmployeeId')}
                       required
                       className="text-base pr-8"
                     />
@@ -359,17 +363,17 @@ export default function BookingPage() {
                   )}
                   {isSearchingName && employeeName.length >= 2 && (
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg px-4 py-3 text-sm text-gray-500">
-                      Searching...
+                      {t('common.search')}...
                     </div>
                   )}
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-sm">Department</Label>
+                  <Label className="text-sm">{t('bookingForm.department')}</Label>
                   <Input
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
-                    placeholder="Department"
+                    placeholder={t('bookingForm.department')}
                     required
                     className="text-base"
                   />
@@ -416,20 +420,20 @@ export default function BookingPage() {
                   <div className="flex flex-wrap items-center gap-2 sm:gap-4">
                     <div className="flex items-center">
                       <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500 mr-1 sm:mr-2"></div>
-                      <span className="text-xs">All available</span>
+                      <span className="text-xs">{t('calendar.allAvailable')}</span>
                     </div>
                     <div className="flex items-center">
                       <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-400 mr-1 sm:mr-2"></div>
-                      <span className="text-xs">Limited</span>
+                      <span className="text-xs">{t('calendar.limited')}</span>
                     </div>
                     <div className="flex items-center">
                       <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500 mr-1 sm:mr-2"></div>
-                      <span className="text-xs">Fully booked</span>
+                      <span className="text-xs">{t('calendar.fullyBooked')}</span>
                     </div>
                   </div>
                   {selectedDate && (
                     <div className="text-blue-600 font-medium text-xs sm:text-sm">
-                      Selected: {format(selectedDate, 'MMM d, yyyy')}
+                      {t('calendar.selected')}: {format(selectedDate, 'MMM d, yyyy')}
                     </div>
                   )}
                 </div>
@@ -459,7 +463,7 @@ export default function BookingPage() {
                       >
                         <div className="text-xs sm:text-sm font-medium">{timeSlot}</div>
                         <div className="text-xs mt-1">
-                          {isAvailable ? 'Available' : 'Booked'}
+                          {isAvailable ? t('booking.available') : t('booking.booked')}
                         </div>
                       </button>
                     );
@@ -539,19 +543,19 @@ export default function BookingPage() {
         {bookingSuccess && bookingCredentials && (
           <Card className="mt-6 border-green-200 bg-green-50">
             <CardHeader>
-              <CardTitle className="text-green-800 text-lg sm:text-xl">Booking Successful!</CardTitle>
-              <CardDescription className="text-green-700 text-sm">Please save your booking credentials to manage your booking later.</CardDescription>
+              <CardTitle className="text-green-800 text-lg sm:text-xl">{t('bookingForm.bookingSuccessful')}</CardTitle>
+              <CardDescription className="text-green-700 text-sm">{t('bookingForm.saveYourCredentials')}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="bg-white p-4 rounded-lg border border-green-200">
                   <div className="space-y-3">
                     <div>
-                      <Label className="text-xs text-gray-600">Booking Number</Label>
+                      <Label className="text-xs text-gray-600">{t('bookingForm.bookingNumber')}</Label>
                       <div className="text-lg font-bold text-gray-900 mt-1">{bookingCredentials.bookingNumber}</div>
                     </div>
                     <div>
-                      <Label className="text-xs text-gray-600">Booking Password</Label>
+                      <Label className="text-xs text-gray-600">{t('bookingForm.bookingPassword')}</Label>
                       <div className="text-lg font-bold text-gray-900 mt-1">{bookingCredentials.bookingPassword}</div>
                     </div>
                   </div>
@@ -560,18 +564,18 @@ export default function BookingPage() {
                   <Button 
                     onClick={() => {
                       navigator.clipboard.writeText(`Booking Number: ${bookingCredentials.bookingNumber}\nBooking Password: ${bookingCredentials.bookingPassword}`);
-                      alert('Credentials copied to clipboard!');
+                      alert(t('bookingForm.credentialsCopied'));
                     }}
                     variant="outline"
                     className="flex-1 text-sm"
                   >
-                    Copy Credentials
+                    {t('bookingForm.copyCredentials')}
                   </Button>
                   <Button 
                     onClick={() => router.push('/')}
                     className="flex-1 text-sm"
                   >
-                    Go to Home
+                    {t('bookingForm.goToHome')}
                   </Button>
                 </div>
               </div>

@@ -76,19 +76,19 @@ export default function AdminLoginPage() {
                 className="w-32 h-32 object-cover rounded-full mx-auto"
               />
             </div>
-            <CardTitle className="text-2xl">Admin Login</CardTitle>
+            <CardTitle className="text-2xl">{t('adminAuth.adminLogin')}</CardTitle>
             <CardDescription className="text-base">
-              Enter your admin email and password to access the dashboard
+              {t('adminAuth.enterAdminEmail')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-sm">Email</Label>
+                <Label htmlFor="email" className="text-sm">{t('employee.email')}</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={t('employee.email')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -96,11 +96,11 @@ export default function AdminLoginPage() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-sm">Password</Label>
+                <Label htmlFor="password" className="text-sm">{t('auth.password')}</Label>
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder={t('auth.password')}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -117,7 +117,7 @@ export default function AdminLoginPage() {
                 className="w-full py-3 text-base"
                 disabled={isLoading}
               >
-                {isLoading ? t('common.loading') : 'Login as Admin'}
+                {isLoading ? t('common.loading') : t('adminAuth.adminLogin')}
               </Button>
             </form>
           </CardContent>

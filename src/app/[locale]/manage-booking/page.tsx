@@ -45,33 +45,33 @@ export default function ManageBookingPage() {
     try {
       const result = await getBookingByCredentials(bookingNumber, bookingPassword);
       if (!result) {
-        setError('Invalid booking number or password');
+        setError(t('manageBooking.invalidCredentials'));
         return;
       }
       setBooking(result);
       setShowDetails(true);
     } catch (err) {
-      setError('Failed to retrieve booking. Please try again.');
+      setError(t('common.error') + '. ' + t('common.pleaseSignIn'));
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleCancel = async () => {
-    if (!confirm('Are you sure you want to cancel this booking?')) {
+    if (!confirm(t('common.confirm'))) {
       return;
     }
 
     setIsLoading(true);
     try {
       await cancelBooking(booking.id);
-      alert('Booking cancelled successfully');
+      alert(t('manageBooking.cancelBooking'));
       setBooking(null);
       setShowDetails(false);
       setBookingNumber('');
       setBookingPassword('');
     } catch (err) {
-      setError('Failed to cancel booking. Please try again.');
+      setError(t('manageBooking.cancelBookingFailed'));
     } finally {
       setIsLoading(false);
     }
@@ -81,14 +81,14 @@ export default function ManageBookingPage() {
     e.preventDefault();
     
     if (!requestedDate || !requestedSlot || !changeReason) {
-      setError('Please fill in all change request fields');
+      setError(t('booking.purpose') + ' ' + t('common.required'));
       return;
     }
 
     setIsLoading(true);
     try {
       await requestBookingChange(booking.id, requestedDate, requestedSlot, changeReason);
-      alert('Change request submitted. Waiting for admin approval.');
+      alert(t('manageBooking.requestChange') + '. ' + t('admin.pending'));
       setShowChangeRequest(false);
       setRequestedDate('');
       setRequestedSlot('');
@@ -101,7 +101,7 @@ export default function ManageBookingPage() {
       console.log('Updated booking after change request:', result);
     } catch (err) {
       console.error('Change request error:', err);
-      setError('Failed to submit change request. Please try again.');
+      setError(t('manageBooking.cancelBookingFailed'));
     } finally {
       setIsLoading(false);
     }
@@ -115,7 +115,7 @@ export default function ManageBookingPage() {
             <ArrowLeft className="w-4 h-4 mr-2" />
             {t('common.back')}
           </Button>
-          <h1 className="text-lg sm:text-xl font-semibold">Manage Booking</h1>
+          <h1 className="text-lg sm:text-xl font-semibold">{t('home.manageBooking')}</h1>
         </div>
       </header>
 
@@ -123,15 +123,15 @@ export default function ManageBookingPage() {
         {!showDetails ? (
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl sm:text-2xl">Find Your Booking</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl">{t('manageBooking.findYourBooking')}</CardTitle>
               <CardDescription className="text-sm sm:text-base">
-                Enter your booking number and password to manage your booking
+                {t('manageBooking.enterBookingCredentials')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSearch} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="bookingNumber" className="text-sm">Booking Number</Label>
+                  <Label htmlFor="bookingNumber" className="text-sm">{t('bookingForm.bookingNumber')}</Label>
                   <Input
                     id="bookingNumber"
                     type="text"
@@ -143,7 +143,7 @@ export default function ManageBookingPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="bookingPassword" className="text-sm">Booking Password</Label>
+                  <Label htmlFor="bookingPassword" className="text-sm">{t('bookingForm.bookingPassword')}</Label>
                   <Input
                     id="bookingPassword"
                     type="password"
@@ -161,7 +161,7 @@ export default function ManageBookingPage() {
                   </div>
                 )}
                 <Button type="submit" className="w-full py-3 sm:py-2 text-base" disabled={isLoading}>
-                  {isLoading ? t('common.loading') : 'Find Booking'}
+                  {isLoading ? t('common.loading') : t('common.search')}
                 </Button>
               </form>
             </CardContent>
@@ -169,26 +169,26 @@ export default function ManageBookingPage() {
         ) : (
           <Card>
             <CardHeader>
-              <CardTitle className="text-xl sm:text-2xl">Booking Details</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl">{t('booking.bookingDate')}</CardTitle>
               <CardDescription className="text-sm sm:text-base">
-                Booking Number: {booking.bookingNumber}
+                {t('bookingForm.bookingNumber')}: {booking.bookingNumber}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4 sm:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <Label className="text-xs text-gray-600">Employee Name</Label>
+                    <Label className="text-xs text-gray-600">{t('employee.name')}</Label>
                     <div className="text-sm sm:text-base font-medium">{booking.employeeName}</div>
                   </div>
                   <div className="space-y-1">
-                    <Label className="text-xs text-gray-600">Department</Label>
+                    <Label className="text-xs text-gray-600">{t('employee.department')}</Label>
                     <div className="text-sm sm:text-base font-medium">{booking.employeeDepartment}</div>
                   </div>
                   <div className="space-y-1">
                     <Label className="text-xs text-gray-600 flex items-center">
                       <CalendarIcon className="w-3 h-3 mr-1" />
-                      Date
+                      {t('calendar.today')}
                     </Label>
                     <div className="text-sm sm:text-base font-medium">
                       {format(new Date(booking.bookingDate), 'MMM d, yyyy')}
@@ -197,26 +197,26 @@ export default function ManageBookingPage() {
                   <div className="space-y-1">
                     <Label className="text-xs text-gray-600 flex items-center">
                       <Clock className="w-3 h-3 mr-1" />
-                      Time Slot
+                      {t('booking.bookingTime')}
                     </Label>
                     <div className="text-sm sm:text-base font-medium">{booking.slot}</div>
                   </div>
                   <div className="space-y-1">
                     <Label className="text-xs text-gray-600 flex items-center">
                       <Users className="w-3 h-3 mr-1" />
-                      Number of Guests
+                      {t('booking.numberOfGuests')}
                     </Label>
                     <div className="text-sm sm:text-base font-medium">{booking.pax}</div>
                   </div>
                   <div className="space-y-1">
-                    <Label className="text-xs text-gray-600">Purpose</Label>
+                    <Label className="text-xs text-gray-600">{t('booking.purpose')}</Label>
                     <div className="text-sm sm:text-base font-medium">{booking.purpose}</div>
                   </div>
                 </div>
 
                 {booking.remarks && (
                   <div className="space-y-1">
-                    <Label className="text-xs text-gray-600">Remarks</Label>
+                    <Label className="text-xs text-gray-600">{t('booking.remarks')}</Label>
                     <div className="text-sm sm:text-base">{booking.remarks}</div>
                   </div>
                 )}
@@ -229,7 +229,7 @@ export default function ManageBookingPage() {
                         ? 'bg-red-100 text-red-800'
                         : 'bg-gray-100 text-gray-800'
                   }`}>
-                    Status: {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
+                    {t('status.booked')}: {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
                   </div>
                   <div className={`px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${
                     booking.approvalStatus === 'approved'
@@ -242,26 +242,26 @@ export default function ManageBookingPage() {
                             ? 'bg-red-100 text-red-800'
                             : 'bg-gray-100 text-gray-800'
                   }`}>
-                    Approval: {booking.approvalStatus.replace('_', ' ').charAt(0).toUpperCase() + booking.approvalStatus.replace('_', ' ').slice(1)}
+                    {t('admin.pending')}: {booking.approvalStatus.replace('_', ' ').charAt(0).toUpperCase() + booking.approvalStatus.replace('_', ' ').slice(1)}
                   </div>
                 </div>
 
                 {booking.approvalStatus === 'change_requested' && (
                   <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-orange-900 mb-2">Change Request Pending</h4>
+                    <h4 className="font-semibold text-orange-900 mb-2">{t('admin.pending')}</h4>
                     <p className="text-sm text-orange-800">
-                      Requested: {format(new Date(booking.requestedDate), 'MMM d, yyyy')} at {booking.requestedSlot}
+                      {t('calendar.selected')}: {format(new Date(booking.requestedDate), 'MMM d, yyyy')} at {booking.requestedSlot}
                     </p>
                     {booking.changeRequestReason && (
-                      <p className="text-sm text-orange-700 mt-1">Reason: {booking.changeRequestReason}</p>
+                      <p className="text-sm text-orange-700 mt-1">{t('booking.purpose')}: {booking.changeRequestReason}</p>
                     )}
                   </div>
                 )}
 
                 {booking.approvalStatus === 'rejected' && booking.changeRequestReason && (
                   <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <h4 className="font-semibold text-red-900 mb-2">Change Request Rejected</h4>
-                    <p className="text-sm text-red-800">Reason: {booking.changeRequestReason}</p>
+                    <h4 className="font-semibold text-red-900 mb-2">{t('status.cancelled')}</h4>
+                    <p className="text-sm text-red-800">{t('booking.purpose')}: {booking.changeRequestReason}</p>
                   </div>
                 )}
 
@@ -275,7 +275,7 @@ export default function ManageBookingPage() {
                         disabled={isLoading}
                       >
                         <Edit className="w-4 h-4 mr-2" />
-                        Request Change
+                        {t('manageBooking.requestChange')}
                       </Button>
                     )}
                     <Button
@@ -284,7 +284,7 @@ export default function ManageBookingPage() {
                       className="flex-1 text-sm"
                       disabled={isLoading}
                     >
-                      {isLoading ? t('common.loading') : 'Cancel Booking'}
+                      {isLoading ? t('common.loading') : t('manageBooking.cancelBooking')}
                     </Button>
                     <Button
                       onClick={() => {
@@ -296,7 +296,7 @@ export default function ManageBookingPage() {
                       variant="outline"
                       className="flex-1 text-sm"
                     >
-                      Search Another
+                      {t('common.search')}
                     </Button>
                   </div>
                 )}
@@ -312,7 +312,7 @@ export default function ManageBookingPage() {
                     variant="outline"
                     className="w-full text-sm"
                   >
-                    Search Another Booking
+                    {t('common.search')} {t('booking.newBooking')}
                   </Button>
                 )}
               </div>
@@ -323,15 +323,15 @@ export default function ManageBookingPage() {
         {showChangeRequest && (
           <Card className="mt-4">
             <CardHeader>
-              <CardTitle className="text-xl sm:text-2xl">Request Booking Change</CardTitle>
+              <CardTitle className="text-xl sm:text-2xl">{t('manageBooking.requestChange')}</CardTitle>
               <CardDescription className="text-sm sm:text-base">
-                Request to change your booking date and time (requires admin approval)
+                {t('manageBooking.requestChange')} {t('booking.bookingDate')} {t('booking.bookingTime')} ({t('admin.pending')})
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleChangeRequest} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="requestedDate" className="text-sm">New Date</Label>
+                  <Label htmlFor="requestedDate" className="text-sm">{t('calendar.today')}</Label>
                   <Input
                     id="requestedDate"
                     type="date"
@@ -343,7 +343,7 @@ export default function ManageBookingPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="requestedSlot" className="text-sm">New Time Slot</Label>
+                  <Label htmlFor="requestedSlot" className="text-sm">{t('booking.bookingTime')}</Label>
                   <select
                     id="requestedSlot"
                     value={requestedSlot}
@@ -351,14 +351,14 @@ export default function ManageBookingPage() {
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md text-base"
                   >
-                    <option value="">Select a time slot</option>
+                    <option value="">{t('booking.selectSlot')}</option>
                     {TIME_SLOTS.map(slot => (
                       <option key={slot} value={slot}>{slot}</option>
                     ))}
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="changeReason" className="text-sm">Reason for Change</Label>
+                  <Label htmlFor="changeReason" className="text-sm">{t('booking.purpose')}</Label>
                   <textarea
                     id="changeReason"
                     value={changeReason}
@@ -366,7 +366,7 @@ export default function ManageBookingPage() {
                     required
                     className="w-full px-3 py-2 border border-gray-300 rounded-md text-base"
                     rows={3}
-                    placeholder="Please explain why you need to change your booking"
+                    placeholder={t('booking.remarks')}
                   />
                 </div>
                 {error && (
@@ -381,7 +381,7 @@ export default function ManageBookingPage() {
                     className="flex-1 text-sm"
                     disabled={isLoading}
                   >
-                    {isLoading ? t('common.loading') : 'Submit Request'}
+                    {isLoading ? t('common.loading') : t('common.submit')}
                   </Button>
                   <Button
                     type="button"
@@ -395,7 +395,7 @@ export default function ManageBookingPage() {
                     variant="outline"
                     className="flex-1 text-sm"
                   >
-                    Cancel
+                    {t('common.cancel')}
                   </Button>
                 </div>
               </form>

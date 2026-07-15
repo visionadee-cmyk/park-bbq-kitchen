@@ -5,13 +5,11 @@ import { useRouter } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Select } from '@/components/ui/select';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { LanguageSelector } from '@/components/LanguageSelector';
 
 export default function HomePage() {
   const t = useTranslations();
   const router = useRouter();
-  const { language, setLanguage, languages } = useLanguage();
 
   const handleBookNow = () => {
     router.push('/booking');
@@ -35,23 +33,13 @@ export default function HomePage() {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="language" className="text-sm">Language</Label>
-              <Select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className="text-base"
-              >
-                {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.flag} {lang.name}
-                  </option>
-                ))}
-              </Select>
+              <LanguageSelector />
             </div>
             <Button onClick={handleBookNow} className="w-full py-3 sm:py-2 text-base" size="lg">
-              Book Now
+              {t('home.bookNow')}
             </Button>
             <Button variant="outline" onClick={() => router.push('/manage-booking')} className="w-full text-sm">
-              Manage Booking
+              {t('home.manageBooking')}
             </Button>
           </div>
         </CardContent>

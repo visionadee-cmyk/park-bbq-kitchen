@@ -18,7 +18,9 @@
     "yes": "হ্যাঁ",
     "no": "না",
     "close": "বন্ধ করুন",
-    "language": "ভাষা"
+    "language": "ভাষা",
+    "required": "প্রয়োজনীয",
+    "pleaseSignIn": "চালিয়ে যেতে লগইন করুন"
   },
   "auth": {
     "login": "লগইন",
@@ -110,7 +112,14 @@
     "today": "আজ",
     "tomorrow": "আগামীকাল",
     "thisWeek": "এই সপ্তাহ",
-    "thisMonth": "এই মাস"
+    "thisMonth": "এই মাস",
+    "weekend": "সপ্তাহান্ত",
+    "past": "অতীত",
+    "unavailable": "অনুপলব্ধ",
+    "allAvailable": "সব উপলব্ধ",
+    "limited": "সীমিত",
+    "fullyBooked": "সম্পূর্ণ বুক করা",
+    "selected": "নির্বাচিত"
   },
   "reports": {
     "bookingsByDepartment": "বিভাগ অনুযায়ী বুকিং",
@@ -148,5 +157,36 @@
     "16_00": "16:00–18:00",
     "18_00": "18:00–20:00",
     "20_00": "20:00–22:00"
+  },
+  "home": {
+    "bookNow": "এখন বুক করুন",
+    "manageBooking": "বুকিং পরিচালনা করুন",
+    "selectLanguage": "ভাষা নির্বাচন করুন"
+  },
+  "adminAuth": {
+    "adminLogin": "অ্যাডমিন লগইন",
+    "adminAccessOnly": "শুধুমাত্র অ্যাডমিন অ্যাক্সেস",
+    "enterAdminEmail": "ড্যাশবোর্ডে প্রবেশ করতে আপনার অ্যাডমিন ইমেল এবং পাসওয়ার্ড লিখুন"
+  },
+  "bookingForm": {
+    "fullNameOrEmployeeId": "পূর্ণ নাম / কর্মচারী আইডি",
+    "typeNameOrEmployeeId": "অনুসন্ধান করতে নাম বা কর্মচারী আইডি টাইপ করুন",
+    "department": "বিভাগ",
+    "pleaseFillEmployeeInfo": "কর্মচারী তথ্য পূরণ করুন",
+    "bookingNumber": "বুকিং নম্বর",
+    "bookingPassword": "বুকিং পাসওয়ার্ড",
+    "copyCredentials": "ক্রেডেনশিয়ালস কপি করুন",
+    "goToHome": "হোমে যান",
+    "credentialsCopied": "ক্রেডেনশিয়ালস ক্লিপবোর্ডে কপি হয়েছে!",
+    "bookingSuccessful": "বুকিং সফল!",
+    "saveYourCredentials": "পরবর্তীতে আপনার বুকিং পরিচালনা করতে আপনার বুকিং ক্রেডেনশিয়ালস সংরক্ষণ করুন"
+  },
+  "manageBooking": {
+    "findYourBooking": "আপনার বুকিং খুঁজুন",
+    "enterBookingCredentials": "আপনার বুকিং খুঁজতে বুকিং নম্বর এবং পাসওয়ার্ড লিখুন",
+    "invalidCredentials": "ভুল বুকিং নম্বর বা পাসওয়ার্ড",
+    "cancelBookingFailed": "বুকিং বাতিল করতে ব্যর্থ। আবার চেষ্টা করুন।",
+    "requestChange": "পরিবর্তনের অনুরোধ করুন",
+    "cancelBooking": "বুকিং বাতিল করুন"
   }
 }

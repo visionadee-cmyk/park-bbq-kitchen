@@ -18,7 +18,9 @@
     "yes": "އާނ",
     "no": "ނޫން",
     "close": "ލައްޕާލަން",
-    "language": "ބަސް"
+    "language": "ބަސް",
+    "required": "ހުރިހާ",
+    "pleaseSignIn": "ކުރިއަށް ދިއުމަށް ލޮގިން ކުރައްވާ"
   },
   "auth": {
     "login": "ލޮގިން",
@@ -110,7 +112,14 @@
     "today": "މިއަދު",
     "tomorrow": "މާދަމާ",
     "thisWeek": "މިހަފްތާ",
-    "thisMonth": "މިމަހު"
+    "thisMonth": "މިމަހު",
+    "weekend": "ހަފްތާގެ ފަހު",
+    "past": "ހިނގާދިޔަ",
+    "unavailable": "ލިބެންހުރި",
+    "allAvailable": "ހުޅުވިފައިވާ ހުރިހާ",
+    "limited": "ސީމިތު",
+    "fullyBooked": "ފުޅުވެފައިވާ",
+    "selected": "ހިޔާރުކުރެވިފައި"
   },
   "reports": {
     "bookingsByDepartment": "ޑިޕާޓްމަންޓް އިން ބުކިންގތައް",
@@ -148,5 +157,36 @@
     "16_00": "16:00–18:00",
     "18_00": "18:00–20:00",
     "20_00": "20:00–22:00"
+  },
+  "home": {
+    "bookNow": "މިހާރު ބުކްކުރޭ",
+    "manageBooking": "ބުކިންގ މެނޭޖް ކުރޭ",
+    "selectLanguage": "ބަސް ހިޔާރުކުރޭ"
+  },
+  "adminAuth": {
+    "adminLogin": "އެޑްމިން ލޮގިން",
+    "adminAccessOnly": "އެޑްމިން މަންވަރަށް އެކްސެސް",
+    "enterAdminEmail": "ޑޭޝްބޯޑަށް ވަދެވޭގޮތަށް ތިބާގެ އެޑްމިން އީމެއިލާއި ޕާސްވޯޑް އުފުލާފައިވާ"
+  },
+  "bookingForm": {
+    "fullNameOrEmployeeId": "ފުން ނަން / ވަޒީފާގެ މީހުން އައިޑީ",
+    "typeNameOrEmployeeId": "ހޯދަން ނަން ނުވަތަ ވަޒީފާގެ މީހުން އައިޑީ ލިޔޭ",
+    "department": "ޑިޕާޓްމަންޓް",
+    "pleaseFillEmployeeInfo": "ވަޒީފާގެ މީހުންގެ މަޢުލޫމާތު ހުރިހާ ލިބުން",
+    "bookingNumber": "ބުކިންގ ނަންބަރު",
+    "bookingPassword": "ބުކިންގ ޕާސްވޯޑް",
+    "copyCredentials": "ކްރެޑެންޝަލްސް ކޮޕީ ކުރޭ",
+    "goToHome": "ހޯމަށް ވަދެވޭ",
+    "credentialsCopied": "ކްރެޑެންޝަލްސް ކްލިޕްބޯޑަށް ކޮޕީ ކުރެވިއްޖެ!",
+    "bookingSuccessful": "ބުކިންގ ކާމިޔާބު!",
+    "saveYourCredentials": "ފަހުން ތިބާގެ ބުކިންގ މެނޭޖް ކުރުމަށް ތިބާގެ ބުކިންގ ކްރެޑެންޝަލްސް ސޭވް ކުރޭ"
+  },
+  "manageBooking": {
+    "findYourBooking": "ތިބާގެ ބުކިންގ ހޯދަން",
+    "enterBookingCredentials": "ތިބާގެ ބުކިންގ ހޯދަން ބުކިންގ ނަންބަރުއާއި ޕާސްވޯޑް އުފުލާފައިވާ",
+    "invalidCredentials": "ހުރިހާ ނޫން ބުކިންގ ނަންބަރު ނުވަތަ ޕާސްވޯޑް",
+    "cancelBookingFailed": "ބުކިންގ ކެންސަލް ކުރެވޭން ނެތް. އަލުން މަސައްކުރޭ.",
+    "requestChange": "ބަދަލު ހޯދަން",
+    "cancelBooking": "ބުކިންގ ކެންސަލް ކުރޭ"
   }
 }

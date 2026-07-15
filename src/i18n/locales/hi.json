@@ -18,7 +18,9 @@
     "yes": "हाँ",
     "no": "नहीं",
     "close": "बंद करें",
-    "language": "भाषा"
+    "language": "भाषा",
+    "required": "आवश्यक",
+    "pleaseSignIn": "जारी रखने के लिए कृपया साइन इन करें"
   },
   "auth": {
     "login": "लॉग इन",
@@ -110,7 +112,14 @@
     "today": "आज",
     "tomorrow": "कल",
     "thisWeek": "इस सप्ताह",
-    "thisMonth": "इस महीने"
+    "thisMonth": "इस महीने",
+    "weekend": "सप्ताहांत",
+    "past": "भूतकाल",
+    "unavailable": "अनुपलब्ध",
+    "allAvailable": "सभी उपलब्ध",
+    "limited": "सीमित",
+    "fullyBooked": "पूरी तरह से बुक",
+    "selected": "चयनित"
   },
   "reports": {
     "bookingsByDepartment": "विभाग के अनुसार बुकिंग",
@@ -148,5 +157,36 @@
     "16_00": "16:00–18:00",
     "18_00": "18:00–20:00",
     "20_00": "20:00–22:00"
+  },
+  "home": {
+    "bookNow": "अभी बुक करें",
+    "manageBooking": "बुकिंग प्रबंधित करें",
+    "selectLanguage": "भाषा चुनें"
+  },
+  "adminAuth": {
+    "adminLogin": "एडमिन लॉग इन",
+    "adminAccessOnly": "केवल एडमिन एक्सेस",
+    "enterAdminEmail": "डैशबोर्ड तक पहुंचने के लिए अपना एडमिन ईमेल और पासवर्ड दर्ज करें"
+  },
+  "bookingForm": {
+    "fullNameOrEmployeeId": "पूरा नाम / कर्मचारी आईडी",
+    "typeNameOrEmployeeId": "खोजने के लिए नाम या कर्मचारी आईडी टाइप करें",
+    "department": "विभाग",
+    "pleaseFillEmployeeInfo": "कृपया कर्मचारी जानकारी भरें",
+    "bookingNumber": "बुकिंग नंबर",
+    "bookingPassword": "बुकिंग पासवर्ड",
+    "copyCredentials": "क्रेडेंशियल्स कॉपी करें",
+    "goToHome": "होम पर जाएं",
+    "credentialsCopied": "क्रेडेंशियल्स क्लिपबोर्ड पर कॉपी किए गए!",
+    "bookingSuccessful": "बुकिंग सफल!",
+    "saveYourCredentials": "बाद में अपनी बुकिंग प्रबंधित करने के लिए कृपया अपने बुकिंग क्रेडेंशियल्स सहेजें"
+  },
+  "manageBooking": {
+    "findYourBooking": "अपनी बुकिंग खोजें",
+    "enterBookingCredentials": "अपनी बुकिंग खोजने के लिए बुकिंग नंबर और पासवर्ड दर्ज करें",
+    "invalidCredentials": "अमान्य बुकिंग नंबर या पासवर्ड",
+    "cancelBookingFailed": "बुकिंग रद्द करने में विफल। कृपया पुनः प्रयास करें।",
+    "requestChange": "परिवर्तन अनुरोध करें",
+    "cancelBooking": "बुकिंग रद्द करें"
   }
 }

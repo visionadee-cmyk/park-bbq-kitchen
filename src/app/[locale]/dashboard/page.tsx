@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { getBookingsByEmployee } from '@/lib/bookings';
 import { Booking } from '@/types';
 import { LogOut, Calendar, Plus } from 'lucide-react';
@@ -72,10 +73,13 @@ export default function DashboardPage() {
               <p className="text-sm text-gray-600">{user?.fullName} - {user?.department}</p>
             </div>
           </div>
-          <Button variant="outline" onClick={handleLogout}>
-            <LogOut className="w-4 h-4 mr-2" />
-            {t('auth.logout')}
-          </Button>
+          <div className="flex items-center space-x-4">
+            <LanguageSelector />
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="w-4 h-4 mr-2" />
+              {t('auth.logout')}
+            </Button>
+          </div>
         </div>
       </header>
 

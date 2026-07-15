@@ -39,15 +39,15 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body className={`${locale === 'dv' ? 'font-dhivehi' : inter.className}`}>
         <ServiceWorkerRegistration />
-        <LanguageProvider>
-          <AuthProvider>
-            <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={messages}>
+          <LanguageProvider>
+            <AuthProvider>
               {children}
-            </NextIntlClientProvider>
-          </AuthProvider>
-        </LanguageProvider>
+            </AuthProvider>
+          </LanguageProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

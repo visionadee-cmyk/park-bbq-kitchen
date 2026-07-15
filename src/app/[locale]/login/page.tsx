@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { authenticateEmployee } from '@/lib/auth';
 import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
@@ -48,19 +49,20 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-6">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <div className="flex items-center space-x-2 mb-4">
+          <div className="flex items-center justify-between mb-4">
             <Button variant="ghost" size="sm" onClick={() => router.push('/')}>
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back
+              {t('common.back')}
             </Button>
+            <LanguageSelector />
           </div>
-          <CardTitle className="text-xl sm:text-2xl font-bold text-center">Admin Login</CardTitle>
-          <CardDescription className="text-center text-sm sm:text-base">Admin access only</CardDescription>
+          <CardTitle className="text-xl sm:text-2xl font-bold text-center">{t('adminAuth.adminLogin')}</CardTitle>
+          <CardDescription className="text-center text-sm sm:text-base">{t('adminAuth.adminAccessOnly')}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="employeeId" className="text-sm">Employee ID</Label>
+              <Label htmlFor="employeeId" className="text-sm">{t('auth.employeeId')}</Label>
               <Input
                 id="employeeId"
                 type="text"
@@ -72,7 +74,7 @@ export default function AdminLoginPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-sm">Password</Label>
+              <Label htmlFor="password" className="text-sm">{t('auth.password')}</Label>
               <Input
                 id="password"
                 type="password"
@@ -86,7 +88,7 @@ export default function AdminLoginPage() {
               <div className="text-xs sm:text-sm text-red-500 text-center">{error}</div>
             )}
             <Button type="submit" className="w-full py-3 sm:py-2 text-base" disabled={isLoading}>
-              {isLoading ? t('common.loading') : 'Login'}
+              {isLoading ? t('common.loading') : t('auth.login')}
             </Button>
           </form>
         </CardContent>

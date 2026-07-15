@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -12,6 +13,7 @@ import { db } from '@/lib/firebase';
 import bcrypt from 'bcryptjs';
 
 export default function CreateAdminPage() {
+  const t = useTranslations();
   const router = useRouter();
   const [employeeId, setEmployeeId] = useState('villa-park_13011');
   const [email, setEmail] = useState('');
@@ -101,20 +103,20 @@ export default function CreateAdminPage() {
           className="mb-4"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Admin
+          {t('common.back')} {t('admin.adminDashboard')}
         </Button>
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Create Admin User</CardTitle>
+            <CardTitle className="text-2xl">{t('adminAuth.adminLogin')}</CardTitle>
             <CardDescription>
-              Update an existing employee to admin role
+              {t('admin.manageEmployees')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleCreateAdmin} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="employeeId">Employee ID</Label>
+                <Label htmlFor="employeeId">{t('auth.employeeId')}</Label>
                 <Input
                   id="employeeId"
                   value={employeeId}
@@ -127,7 +129,7 @@ export default function CreateAdminPage() {
                 </p>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email (Optional)</Label>
+                <Label htmlFor="email">{t('employee.email')} ({t('common.loading')})</Label>
                 <Input
                   id="email"
                   type="email"
@@ -136,17 +138,17 @@ export default function CreateAdminPage() {
                   placeholder="e.g., admin@example.com"
                 />
                 <p className="text-xs text-gray-500">
-                  Add email if you want to login with email instead of employee ID
+                  {t('bookingForm.department')} {t('employee.email')} {t('auth.employeeId')}
                 </p>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t('auth.password')}</Label>
                 <Input
                   id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter new password"
+                  placeholder={t('auth.password')}
                   required
                 />
               </div>
@@ -157,10 +159,10 @@ export default function CreateAdminPage() {
                 <div className="text-sm text-green-600 bg-green-50 p-3 rounded">
                   {success}
                   <div className="mt-2">
-                    <strong>Admin Credentials:</strong><br />
-                    Employee ID: {employeeId}<br />
-                    Password: {password}<br />
-                    {email && <>Email: {email}<br /></>}
+                    <strong>{t('adminAuth.adminLogin')}:</strong><br />
+                    {t('auth.employeeId')}: {employeeId}<br />
+                    {t('auth.password')}: {password}<br />
+                    {email && <>{t('employee.email')}: {email}<br /></>}
                   </div>
                 </div>
               )}
@@ -169,7 +171,7 @@ export default function CreateAdminPage() {
                 className="w-full"
                 disabled={loading}
               >
-                {loading ? 'Updating...' : 'Update to Admin'}
+                {loading ? t('common.loading') : t('admin.manageEmployees')}
               </Button>
             </form>
           </CardContent>
