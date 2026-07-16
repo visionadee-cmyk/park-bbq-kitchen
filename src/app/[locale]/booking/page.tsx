@@ -64,7 +64,7 @@ export default function BookingPage() {
 
   useEffect(() => {
     const searchEmployeesData = async () => {
-      if (employeeId.length >= 2) {
+      if (employeeId && employeeId.length >= 2) {
         setIsSearchingName(true);
         try {
           const results = await searchEmployees(employeeId);
@@ -88,7 +88,7 @@ export default function BookingPage() {
   }, [employeeId]);
 
   const handleEmployeeSelect = (employee: any) => {
-    setEmployeeId(employee.employeeId);
+    setEmployeeId((employee as any).employeeId || employee.employeeNumber);
     setEmployeeName(employee.fullName);
     setDepartment(employee.department);
     setShowNameDropdown(false);
@@ -377,7 +377,7 @@ export default function BookingPage() {
                         >
                           <div className="font-medium text-sm">{employee.fullName}</div>
                           <div className="text-xs text-gray-500">
-                            {employee.employeeNumber} • {employee.department}
+                            {(employee as any).employeeId || employee.employeeNumber} • {employee.department}
                           </div>
                         </div>
                       ))}

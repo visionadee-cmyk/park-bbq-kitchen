@@ -59,7 +59,8 @@ export async function searchEmployees(searchTerm: string): Promise<Employee[]> {
       } as Employee))
       .filter(employee => 
         (employee.fullName && employee.fullName.toLowerCase().includes(searchTermLower)) ||
-        (employee.employeeNumber && employee.employeeNumber.toLowerCase().includes(searchTermLower))
+        (employee.employeeNumber && employee.employeeNumber.toLowerCase().includes(searchTermLower)) ||
+        ((employee as any).employeeId && (employee as any).employeeId.toLowerCase().includes(searchTermLower))
       )
       .slice(0, 10); // Limit to 10 results
   } catch (error) {
