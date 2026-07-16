@@ -1,9 +1,9 @@
-const CACHE_NAME = 'park-bbq-kitchen-v1';
+const CACHE_NAME = 'park-bbq-kitchen-v2';
 const urlsToCache = [
   '/',
   '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
+  '/icon-192.jpeg',
+  '/icon-512.jpeg',
 ];
 
 self.addEventListener('install', (event) => {
