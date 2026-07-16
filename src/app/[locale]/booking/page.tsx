@@ -88,7 +88,7 @@ export default function BookingPage() {
   }, [employeeId]);
 
   const handleEmployeeSelect = (employee: any) => {
-    setEmployeeId(employee.employeeNumber);
+    setEmployeeId(employee.employeeId);
     setEmployeeName(employee.fullName);
     setDepartment(employee.department);
     setShowNameDropdown(false);
