@@ -46,7 +46,7 @@ export default async function LocaleLayout({
   const messages = await getMessages()
 
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale === 'dv' ? 'rtl' : 'ltr'}>
       <body className={`${locale === 'dv' ? 'font-dhivehi' : inter.className}`}>
         <ServiceWorkerRegistration />
         <NextIntlClientProvider messages={messages}>
