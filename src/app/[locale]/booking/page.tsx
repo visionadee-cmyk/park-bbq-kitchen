@@ -40,6 +40,9 @@ export default function BookingPage() {
   const [showNameDropdown, setShowNameDropdown] = useState(false);
   const [nameSearchResults, setNameSearchResults] = useState<any[]>([]);
   const [isSearchingName, setIsSearchingName] = useState(false);
+  const [showIdDropdown, setShowIdDropdown] = useState(false);
+  const [idSearchResults, setIdSearchResults] = useState<any[]>([]);
+  const [isSearchingId, setIsSearchingId] = useState(false);
   const [signature, setSignature] = useState<string | null>(null);
   const [showSignatureModal, setShowSignatureModal] = useState(false);
 
@@ -88,6 +91,31 @@ export default function BookingPage() {
     return () => clearTimeout(debounceTimer);
   }, [employeeName]);
 
+  useEffect(() => {
+    const searchEmployeesById = async () => {
+      if (employeeCode && employeeCode.length >= 2) {
+        setIsSearchingId(true);
+        try {
+          const results = await searchEmployees(employeeCode);
+          setIdSearchResults(results);
+          setShowIdDropdown(results.length > 0);
+        } catch (error) {
+          console.error('Error searching employees by ID:', error);
+          setIdSearchResults([]);
+          setShowIdDropdown(false);
+        } finally {
+          setIsSearchingId(false);
+        }
+      } else {
+        setIdSearchResults([]);
+        setShowIdDropdown(false);
+      }
+    };
+
+    const debounceTimer = setTimeout(searchEmployeesById, 300);
+    return () => clearTimeout(debounceTimer);
+  }, [employeeCode]);
+
   const handleEmployeeSelect = (employee: any) => {
     setEmployeeId((employee as any).employeeId || employee.employeeNumber);
     setEmployeeCode((employee as any).employeeCode || employee.employeeNumber);
@@ -97,6 +125,15 @@ export default function BookingPage() {
     setNameSearchResults([]);
   };
 
+  const handleEmployeeIdSelect = (employee: any) => {
+    setEmployeeId((employee as any).employeeId || employee.employeeNumber);
+    setEmployeeCode((employee as any).employeeCode || employee.employeeNumber);
+    setEmployeeName(employee.fullName);
+    setDepartment(employee.department);
+    setShowIdDropdown(false);
+    setIdSearchResults([]);
+  };
+
   const clearEmployeeName = () => {
     setEmployeeId('');
     setEmployeeCode('');
@@ -104,6 +141,8 @@ export default function BookingPage() {
     setDepartment('');
     setShowNameDropdown(false);
     setNameSearchResults([]);
+    setShowIdDropdown(false);
+    setIdSearchResults([]);
   };
 
   const loadMonthAvailability = async () => {
@@ -339,15 +378,47 @@ export default function BookingPage() {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="space-y-2">
+                <div className="space-y-2 relative">
                   <Label className="text-sm">{t('auth.employeeId')}</Label>
-                  <Input
-                    value={employeeCode}
-                    onChange={(e) => setEmployeeCode(e.target.value)}
-                    placeholder={t('auth.employeeId')}
-                    required
-                    className="text-base"
-                  />
+                  <div className="relative">
+                    <Input
+                      value={employeeCode}
+                      onChange={(e) => setEmployeeCode(e.target.value)}
+                      placeholder={t('auth.employeeId')}
+                      required
+                      className="text-base pr-8"
+                    />
+                    {employeeCode && (
+                      <button
+                        type="button"
+                        onClick={clearEmployeeName}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                  {showIdDropdown && idSearchResults.length > 0 && (
+                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                      {idSearchResults.map((employee) => (
+                        <div
+                          key={employee.id}
+                          onClick={() => handleEmployeeIdSelect(employee)}
+                          className="px-4 py-3 hover:bg-gray-100 cursor-pointer border-b border-gray-100 last:border-b-0"
+                        >
+                          <div className="font-medium text-sm">{(employee as any).employeeCode || (employee as any).employeeNumber}</div>
+                          <div className="text-xs text-gray-500">
+                            {employee.fullName} • {employee.department}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {isSearchingId && employeeCode.length >= 2 && (
+                    <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg px-4 py-3 text-sm text-gray-500">
+                      {t('common.search')}...
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2 relative">
