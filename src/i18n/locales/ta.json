@@ -99,7 +99,18 @@
     "blockDates": "தேதிகளைத் தடுக்கவும்",
     "settings": "அமைப்புகள்",
     "reports": "அறிக்கைகள்",
-    "analytics": "பகுப்பாய்வு"
+    "analytics": "பகுப்பாய்வு",
+    "bookings": "முன்பதிவுகள்",
+    "employees": "ஊழியர்கள்",
+    "pendingApprovals": "நிலுவை ஒப்புதல்கள்",
+    "totalGuests": "மொத்த விருந்தினர்கள்",
+    "guests": "விருந்தினர்கள்",
+    "kitchenUtilization": "சமையலறை பயன்பாடு",
+    "utilization": "பயன்பாடு",
+    "activeDepartments": "செயலில் உள்ள துறைகள்",
+    "departments": "துறைகள்",
+    "requests": "கோரிக்கைகள்",
+    "allTime": "எல்லா நேரமும்"
   },
   "status": {
     "booked": "முன்பதிவு செய்யப்பட்டது",
@@ -131,7 +142,21 @@
     "averageGuests": "சராசரி விருந்தினர்கள்",
     "kitchenUtilization": "சமையலறை பயன்பாடு",
     "monthlyReport": "மாதாந்திர அறிக்கை",
-    "yearlyReport": "ஆண்டு அறிக்கை"
+    "yearlyReport": "ஆண்டு அறிக்கை",
+    "totalBookings": "மொத்த முன்பதிவுகள்",
+    "totalDepartments": "மொத்த துறைகள்",
+    "filters": "வடிப்பான்கள்",
+    "department": "துறை",
+    "status": "நிலை",
+    "month": "மாதம்",
+    "year": "ஆண்டு",
+    "allDepartments": "அனைத்து துறைகளும்",
+    "allStatuses": "அனைத்து நிலைகளும்",
+    "allMonths": "அனைத்து மாதங்களும்",
+    "allYears": "அனைத்து ஆண்டுகளும்",
+    "resetFilters": "வடிப்பான்களை மீட்டமை",
+    "exportExcel": "எக்செல் ஏற்றுமதி",
+    "exportPDF": "PDF ஏற்றுமதி"
   },
   "notifications": {
     "bookingConfirmed": "முன்பதிவு உறுதிப்படுத்தப்பட்டது",

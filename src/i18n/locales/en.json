@@ -99,7 +99,18 @@
     "blockDates": "Block Dates",
     "settings": "Settings",
     "reports": "Reports",
-    "analytics": "Analytics"
+    "analytics": "Analytics",
+    "bookings": "Bookings",
+    "employees": "Employees",
+    "pendingApprovals": "Pending Approvals",
+    "totalGuests": "Total Guests",
+    "guests": "Guests",
+    "kitchenUtilization": "Kitchen Utilization",
+    "utilization": "Utilization",
+    "activeDepartments": "Active Departments",
+    "departments": "Departments",
+    "requests": "Requests",
+    "allTime": "All Time"
   },
   "status": {
     "booked": "Booked",
@@ -131,7 +142,21 @@
     "averageGuests": "Average Guests",
     "kitchenUtilization": "Kitchen Utilization",
     "monthlyReport": "Monthly Report",
-    "yearlyReport": "Yearly Report"
+    "yearlyReport": "Yearly Report",
+    "totalBookings": "Total Bookings",
+    "totalDepartments": "Total Departments",
+    "filters": "Filters",
+    "department": "Department",
+    "status": "Status",
+    "month": "Month",
+    "year": "Year",
+    "allDepartments": "All Departments",
+    "allStatuses": "All Statuses",
+    "allMonths": "All Months",
+    "allYears": "All Years",
+    "resetFilters": "Reset Filters",
+    "exportExcel": "Export Excel",
+    "exportPDF": "Export PDF"
   },
   "notifications": {
     "bookingConfirmed": "Booking confirmed",

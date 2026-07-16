@@ -99,7 +99,18 @@
     "blockDates": "तारीख ब्लॉक करें",
     "settings": "सेटिंग्स",
     "reports": "रिपोर्ट",
-    "analytics": "विश्लेषण"
+    "analytics": "विश्लेषण",
+    "bookings": "बुकिंग",
+    "employees": "कर्मचारी",
+    "pendingApprovals": "लंबित अनुमोदन",
+    "totalGuests": "कुल मेहमान",
+    "guests": "मेहमान",
+    "kitchenUtilization": "रसोईघर उपयोग",
+    "utilization": "उपयोग",
+    "activeDepartments": "सक्रिय विभाग",
+    "departments": "विभाग",
+    "requests": "अनुरोध",
+    "allTime": "सभी समय"
   },
   "status": {
     "booked": "बुक किया गया",
@@ -131,7 +142,21 @@
     "averageGuests": "औसत मेहमान",
     "kitchenUtilization": "किचन उपयोग",
     "monthlyReport": "मासिक रिपोर्ट",
-    "yearlyReport": "वार्षिक रिपोर्ट"
+    "yearlyReport": "वार्षिक रिपोर्ट",
+    "totalBookings": "कुल बुकिंग",
+    "totalDepartments": "कुल विभाग",
+    "filters": "फ़िल्टर",
+    "department": "विभाग",
+    "status": "स्थिति",
+    "month": "महीना",
+    "year": "वर्ष",
+    "allDepartments": "सभी विभाग",
+    "allStatuses": "सभी स्थितियां",
+    "allMonths": "सभी महीने",
+    "allYears": "सभी वर्ष",
+    "resetFilters": "फ़िल्टर रीसेट करें",
+    "exportExcel": "एक्सेल निर्यात",
+    "exportPDF": "PDF निर्यात"
   },
   "notifications": {
     "bookingConfirmed": "बुकिंग की पुष्टि",

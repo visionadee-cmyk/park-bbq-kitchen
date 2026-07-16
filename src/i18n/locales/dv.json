@@ -99,7 +99,18 @@
     "blockDates": "ދުވަސްތައް ބްލޮކް ކުރުން",
     "settings": "ސެޓިންގސް",
     "reports": "ރިޕޯޓްތައް",
-    "analytics": "އެނަލިޓިކްސް"
+    "analytics": "އެނަލިޓިކްސް",
+    "bookings": "ބުކިންގތައް",
+    "employees": "ވަޒީފާގެ މީހުން",
+    "pendingApprovals": "ހުއްދައަށް އެދިފާ އެޕްރޫވަލްތައް",
+    "totalGuests": "އެންމެ މެހެއްދެން",
+    "guests": "މެހެއްދެން",
+    "kitchenUtilization": "ރަށަންގައިގެ ބޭނުން",
+    "utilization": "ބޭނުން",
+    "activeDepartments": "އެކްޓިވް ޑިޕާޓްމަންޓްތައް",
+    "departments": "ޑިޕާޓްމަންޓްތައް",
+    "requests": "އެދިފައިވާ ތައް",
+    "allTime": "އެންމެ ދުވަސް"
   },
   "status": {
     "booked": "ބުކްކުރެވިފައި",
@@ -131,7 +142,21 @@
     "averageGuests": "އެވެރޭޖް މީހުން",
     "kitchenUtilization": "ކިޗަން ބޭނުންކުރުން",
     "monthlyReport": "މަހުގެ ރިޕޯޓް",
-    "yearlyReport": "އަހަރުގެ ރިޕޯޓް"
+    "yearlyReport": "އަހަރުގެ ރިޕޯޓް",
+    "totalBookings": "އެންމެ ބުކިންގތައް",
+    "totalDepartments": "އެންމެ ޑިޕާޓްމަންޓްތައް",
+    "filters": "ފިލްޓަރތައް",
+    "department": "ޑިޕާޓްމަންޓް",
+    "status": "ސްޓޭޓަސް",
+    "month": "މަސް",
+    "year": "އަހަރު",
+    "allDepartments": "އެންމެ ޑިޕާޓްމަންޓްތައް",
+    "allStatuses": "އެންމެ ސްޓޭޓަސްތައް",
+    "allMonths": "އެންމެ މަސްތައް",
+    "allYears": "އެންމެ އަހަރުތައް",
+    "resetFilters": "ފިލްޓަރތައް ރިސެޓް ކުރޭ",
+    "exportExcel": "އެކްސެލް އެކްސްޕޯޓް ކުރޭ",
+    "exportPDF": "ޕީޑީއެފް އެކްސްޕޯޓް ކުރޭ"
   },
   "notifications": {
     "bookingConfirmed": "ބުކިންގ ކަށަވަރު ވެއްޖޭ",

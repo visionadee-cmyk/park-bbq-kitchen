@@ -246,6 +246,7 @@ export default function AdminPage() {
             </CardHeader>
             <CardContent>
               <div className="text-xl sm:text-2xl font-bold">{stats?.monthly || 0}</div>
+              <p className="text-xs text-muted-foreground">{t('admin.bookings')}</p>
             </CardContent>
           </Card>
           <Card>
@@ -255,6 +256,58 @@ export default function AdminPage() {
             </CardHeader>
             <CardContent>
               <div className="text-xl sm:text-2xl font-bold">{stats?.total || 0}</div>
+              <p className="text-xs text-muted-foreground">{t('admin.employees')}</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-xs sm:text-sm font-medium">{t('admin.pendingApprovals')}</CardTitle>
+              <Clock className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-xl sm:text-2xl font-bold">{allApprovalRequests.length}</div>
+              <p className="text-xs text-muted-foreground">{t('admin.requests')}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-xs sm:text-sm font-medium">{t('admin.totalGuests')}</CardTitle>
+              <Users className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-xl sm:text-2xl font-bold">{bookings.reduce((sum, b) => sum + b.pax, 0)}</div>
+              <p className="text-xs text-muted-foreground">{t('admin.guests')}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-xs sm:text-sm font-medium">{t('admin.kitchenUtilization')}</CardTitle>
+              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-xl sm:text-2xl font-bold">
+                {(() => {
+                  const totalSlots = 7;
+                  const uniqueDates = new Set(bookings.map(b => b.bookingDate));
+                  const totalPossibleSlots = uniqueDates.size * totalSlots;
+                  if (totalPossibleSlots === 0) return '0%';
+                  return Math.round((bookings.length / totalPossibleSlots) * 100) + '%';
+                })()}
+              </div>
+              <p className="text-xs text-muted-foreground">{t('admin.utilization')}</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-xs sm:text-sm font-medium">{t('admin.activeDepartments')}</CardTitle>
+              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-xl sm:text-2xl font-bold">{new Set(bookings.map(b => b.employeeDepartment)).size}</div>
+              <p className="text-xs text-muted-foreground">{t('admin.departments')}</p>
             </CardContent>
           </Card>
         </div>

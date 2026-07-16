@@ -99,7 +99,18 @@
     "blockDates": "তারিখ ব্লক করুন",
     "settings": "সেটিংস",
     "reports": "রিপোর্ট",
-    "analytics": "বিশ্লেষণ"
+    "analytics": "বিশ্লেষণ",
+    "bookings": "বুকিং",
+    "employees": "কর্মচারী",
+    "pendingApprovals": "মুলতুবি অনুমোদন",
+    "totalGuests": "মোট অতিথি",
+    "guests": "অতিথি",
+    "kitchenUtilization": "রান্নাঘর ব্যবহার",
+    "utilization": "ব্যবহার",
+    "activeDepartments": "সক্রিয বিভাগ",
+    "departments": "বিভাগ",
+    "requests": "অনুরোধ",
+    "allTime": "সব সময"
   },
   "status": {
     "booked": "বুক করা হয়েছে",
@@ -131,7 +142,21 @@
     "averageGuests": "গড় অতিথি",
     "kitchenUtilization": "রান্নাঘর ব্যবহার",
     "monthlyReport": "মাসিক রিপোর্ট",
-    "yearlyReport": "বার্ষিক রিপোর্ট"
+    "yearlyReport": "বার্ষিক রিপোর্ট",
+    "totalBookings": "মোট বুকিং",
+    "totalDepartments": "মোট বিভাগ",
+    "filters": "ফিল্টার",
+    "department": "বিভাগ",
+    "status": "স্ট্যাটাস",
+    "month": "মাস",
+    "year": "বছর",
+    "allDepartments": "সব বিভাগ",
+    "allStatuses": "সব স্ট্যাটাস",
+    "allMonths": "সব মাস",
+    "allYears": "সব বছর",
+    "resetFilters": "ফিল্টার রিসেট করুন",
+    "exportExcel": "এক্সেল এক্সপোর্ট",
+    "exportPDF": "PDF এক্সপোর্ট"
   },
   "notifications": {
     "bookingConfirmed": "বুকিং নিশ্চিত",
