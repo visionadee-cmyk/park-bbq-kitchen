@@ -432,17 +432,15 @@ export default function ManageBookingPage() {
 
                 {booking.status === 'booked' && (
                   <div className="flex flex-col sm:flex-row gap-2 pt-4 border-t">
-                    {booking.approvalStatus === 'approved' && (
-                      <Button
-                        onClick={() => setShowChangeRequest(true)}
-                        variant="outline"
-                        className="flex-1 text-sm"
-                        disabled={isLoading}
-                      >
-                        <Edit className="w-4 h-4 mr-2" />
-                        {t('manageBooking.requestChange')}
-                      </Button>
-                    )}
+                    <Button
+                      onClick={() => setShowChangeRequest(true)}
+                      variant="outline"
+                      className="flex-1 text-sm"
+                      disabled={isLoading}
+                    >
+                      <Edit className="w-4 h-4 mr-2" />
+                      {t('manageBooking.requestChange')}
+                    </Button>
                     <Button
                       onClick={handleCancel}
                       variant="destructive"
