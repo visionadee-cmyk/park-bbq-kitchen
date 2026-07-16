@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useAuth } from '@/contexts/AuthContext';
-import { useRouter } from '@/i18n/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -21,6 +21,7 @@ export default function AdminPage() {
   const t = useTranslations();
   const { user, logout } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [filteredBookings, setFilteredBookings] = useState<Booking[]>([]);
   const [stats, setStats] = useState<any>(null);
@@ -194,26 +195,36 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-white shadow-sm border-b sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-8 sm:h-12 w-auto" />
-            <div>
-              <h1 className="text-lg sm:text-2xl font-bold">{t('common.appName')}</h1>
-              <p className="text-xs sm:text-sm text-gray-600">{t('admin.adminDashboard')}</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-8 sm:h-12 w-auto" />
+              <div>
+                <h1 className="text-lg sm:text-2xl font-bold">{t('common.appName')}</h1>
+                <p className="text-xs sm:text-sm text-gray-600">{t('admin.adminDashboard')}</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <img 
+                src="/storyset/Camping-bro.svg" 
+                alt="BBQ Illustration" 
+                className="h-12 w-auto hidden sm:block"
+              />
+              <LanguageSelector />
+              <Button variant="outline" size="sm" onClick={handleLogout}>
+                <LogOut className="w-4 h-4 mr-2" />
+                <span className="hidden sm:inline">{t('auth.logout')}</span>
+              </Button>
             </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <img 
-              src="/storyset/Camping-bro.svg" 
-              alt="BBQ Illustration" 
-              className="h-12 w-auto hidden sm:block"
-            />
-            <LanguageSelector />
-            <Button variant="outline" size="sm" onClick={handleLogout}>
-              <LogOut className="w-4 h-4 mr-2" />
-              <span className="hidden sm:inline">{t('auth.logout')}</span>
+          <nav className="flex space-x-1 sm:space-x-4 border-t pt-4">
+            <Button variant={pathname === '/admin' ? 'default' : 'ghost'} onClick={() => router.push('/admin')}>
+              {t('admin.dashboard')}
             </Button>
-          </div>
+            <Button variant={pathname === '/admin/reports' ? 'default' : 'ghost'} onClick={() => router.push('/admin/reports')}>
+              {t('admin.reports')}
+            </Button>
+          </nav>
         </div>
       </header>
 

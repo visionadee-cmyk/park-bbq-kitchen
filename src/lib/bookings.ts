@@ -217,7 +217,7 @@ export async function rejectBookingChange(bookingId: string, rejectionReason: st
   if (booking.approvalStatus === 'change_requested') {
     // Handle change request rejection
     await updateDoc(bookingRef, {
-      approvalStatus: 'approved',
+      approvalStatus: 'rejected',
       requestedDate: undefined,
       requestedSlot: undefined,
       changeRequestReason: rejectionReason,

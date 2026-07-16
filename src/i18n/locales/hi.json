@@ -84,6 +84,7 @@
   },
   "admin": {
     "adminDashboard": "एडमिन डैशबोर्ड",
+    "dashboard": "डैशबोर्ड",
     "todayBookings": "आज की बुकिंग",
     "tomorrowBookings": "कल की बुकिंग",
     "availableSlots": "उपलब्ध स्लॉट",

@@ -84,6 +84,7 @@
   },
   "admin": {
     "adminDashboard": "അഡ്മിൻ ഡാഷ്ബോർഡ്",
+    "dashboard": "ഡാഷ്ബോർഡ്",
     "todayBookings": "ഇന്നത്തെ ഴുക്കിംഗുകൾ",
     "tomorrowBookings": "നാളത്തെ ഴുക്കിംഗുകൾ",
     "availableSlots": "ലഭ്യമായ ഒഴിവുകൾ",

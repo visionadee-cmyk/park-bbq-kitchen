@@ -84,6 +84,7 @@
   },
   "admin": {
     "adminDashboard": "Admin Dashboard",
+    "dashboard": "Dashboard",
     "todayBookings": "Today's Bookings",
     "tomorrowBookings": "Tomorrow's Bookings",
     "availableSlots": "Available Slots",

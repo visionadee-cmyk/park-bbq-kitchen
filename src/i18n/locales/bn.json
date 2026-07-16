@@ -84,6 +84,7 @@
   },
   "admin": {
     "adminDashboard": "অ্যাডমিন ড্যাশবোর্ড",
+    "dashboard": "ড্যাশবোর্ড",
     "todayBookings": "আজকের বুকিং",
     "tomorrowBookings": "আগামীকালের বুকিং",
     "availableSlots": "উপলব্ধ স্লট",

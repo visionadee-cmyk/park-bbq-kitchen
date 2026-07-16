@@ -2,13 +2,14 @@
 
 import { useTranslations } from 'next-intl';
 import { useAuth } from '@/contexts/AuthContext';
-import { useRouter } from '@/i18n/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { getAllBookings } from '@/lib/bookings';
 import { Booking } from '@/types';
 import { ArrowLeft, Download, Filter, FileText, FileSpreadsheet } from 'lucide-react';
@@ -21,6 +22,7 @@ export default function AdminReportsPage() {
   const t = useTranslations();
   const { user } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [filteredBookings, setFilteredBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -172,23 +174,33 @@ export default function AdminReportsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" onClick={() => router.push('/admin')}>
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              {t('common.back')}
+      <header className="bg-white shadow-sm border-b sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center space-x-2 sm:space-x-4">
+              <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-8 sm:h-12 w-auto" />
+              <div>
+                <h1 className="text-lg sm:text-2xl font-bold">{t('common.appName')}</h1>
+                <p className="text-xs sm:text-sm text-gray-600">{t('admin.adminDashboard')}</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <img 
+                src="/storyset/Barbecue-bro.svg" 
+                alt="BBQ Illustration" 
+                className="h-12 w-auto hidden sm:block"
+              />
+              <LanguageSelector />
+            </div>
+          </div>
+          <nav className="flex space-x-1 sm:space-x-4 border-t pt-4">
+            <Button variant={pathname === '/admin' ? 'default' : 'ghost'} onClick={() => router.push('/admin')}>
+              {t('admin.dashboard')}
             </Button>
-            <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" className="h-10 w-auto" />
-            <h1 className="text-2xl font-bold">{t('admin.adminDashboard')}</h1>
-          </div>
-          <div className="flex items-center space-x-4">
-            <img 
-              src="/storyset/Barbecue-bro.svg" 
-              alt="BBQ Illustration" 
-              className="h-12 w-auto hidden sm:block"
-            />
-          </div>
+            <Button variant={pathname === '/admin/reports' ? 'default' : 'ghost'} onClick={() => router.push('/admin/reports')}>
+              {t('admin.reports')}
+            </Button>
+          </nav>
         </div>
       </header>
 

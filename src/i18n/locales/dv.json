@@ -84,6 +84,7 @@
   },
   "admin": {
     "adminDashboard": "އެޑްމިން ޑޭޝްބޯޑް",
+    "dashboard": "ޑޭޝްބޯޑް",
     "todayBookings": "މިއަދުގެ ބުކިންގތައް",
     "tomorrowBookings": "މާދަމާގެ ބުކިންގތައް",
     "availableSlots": "ހުޅުވިފައިވާ ވަގުތުތައް",

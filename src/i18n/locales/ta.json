@@ -84,6 +84,7 @@
   },
   "admin": {
     "adminDashboard": "நிர்வாகி டாஷ்போர்டு",
+    "dashboard": "டாஷ்போர்டு",
     "todayBookings": "இன்றைய முன்பதிவுகள்",
     "tomorrowBookings": "நாளைய முன்பதிவுகள்",
     "availableSlots": "கிடைக்கும் ஸ்லாட்கள்",
