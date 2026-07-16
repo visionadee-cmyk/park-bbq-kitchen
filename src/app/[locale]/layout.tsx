@@ -7,7 +7,12 @@ import { AuthProvider } from '@/contexts/AuthContext'
 import { LanguageProvider } from '@/contexts/LanguageContext'
 import { ServiceWorkerRegistration } from '@/components/ServiceWorkerRegistration'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-inter',
+})
 
 export const metadata: Metadata = {
   title: 'Park BBQ Kitchen Booking System',
@@ -19,8 +24,11 @@ export const metadata: Metadata = {
     title: 'Park BBQ Kitchen',
   },
   icons: {
-    icon: '/icon-192.png',
-    apple: '/icon-192.png',
+    icon: '/icon-192.jpeg',
+    apple: '/icon-192.jpeg',
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
   },
 }
 
