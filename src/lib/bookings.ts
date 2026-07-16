@@ -57,7 +57,14 @@ export async function getAvailableSlots(date: string): Promise<string[]> {
   const bookings = await getBookingsByDate(date);
   const bookedSlots = bookings.map(b => b.slot);
   
-  return TIME_SLOTS.filter(slot => !bookedSlots.includes(slot));
+  // Also include slots that have pending change requests
+  const requestedSlots = bookings
+    .filter(b => b.requestedSlot && (b.approvalStatus === 'change_requested' || b.approvalStatus === 'pending'))
+    .map(b => b.requestedSlot);
+  
+  const unavailableSlots = [...bookedSlots, ...requestedSlots];
+  
+  return TIME_SLOTS.filter(slot => !unavailableSlots.includes(slot));
 }
 
 export async function createBooking(bookingData: Partial<Booking>) {
@@ -140,6 +147,27 @@ export async function deleteBooking(bookingId: string) {
 }
 
 export async function requestBookingChange(bookingId: string, requestedDate: string, requestedSlot: string, reason: string) {
+  // Check if the requested date/slot is already booked or has a pending change request
+  const existingBookings = await getBookingsByDate(requestedDate);
+  
+  const hasConflict = existingBookings.some(booking => {
+    // Skip the current booking being changed
+    if (booking.id === bookingId) return false;
+    
+    // Check if slot is already booked
+    if (booking.slot === requestedSlot && booking.status === 'booked') return true;
+    
+    // Check if there's a pending change request for this slot
+    if (booking.requestedSlot === requestedSlot && 
+        (booking.approvalStatus === 'change_requested' || booking.approvalStatus === 'pending')) return true;
+    
+    return false;
+  });
+  
+  if (hasConflict) {
+    throw new Error('slot_unavailable');
+  }
+  
   return updateBooking(bookingId, {
     approvalStatus: 'change_requested',
     requestedDate,

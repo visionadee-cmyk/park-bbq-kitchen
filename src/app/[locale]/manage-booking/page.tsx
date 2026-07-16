@@ -117,9 +117,13 @@ export default function ManageBookingPage() {
       const result = await getBookingByCredentials(bookingNumber, bookingPassword);
       setBooking(result);
       console.log('Updated booking after change request:', result);
-    } catch (err) {
+    } catch (err: any) {
       console.error('Change request error:', err);
-      setError(t('manageBooking.cancelBookingFailed'));
+      if (err.message === 'slot_unavailable') {
+        setError(t('booking.slotUnavailable'));
+      } else {
+        setError(t('manageBooking.cancelBookingFailed'));
+      }
     } finally {
       setIsLoading(false);
     }
