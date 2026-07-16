@@ -171,8 +171,8 @@
     "enterAdminEmail": "டாஷ்போர்டு அணுக உங்கள் நிர்வாகி மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும்"
   },
   "bookingForm": {
-    "fullNameOrEmployeeId": "முழு பெயர் / ஊழியர் ஐடி",
-    "typeNameOrEmployeeId": "தேட பெயர் அல்லது ஊழியர் ஐடியை தட்டச்சு செய்யவும்",
+    "fullName": "முழு பெயர்",
+    "typeFullName": "தேட பெயரை தட்டச்சு செய்யவும்",
     "department": "துறை",
     "pleaseFillEmployeeInfo": "ஊழியர் தகவலை நிரப்பவும்",
     "bookingNumber": "முன்பதிவு எண்",

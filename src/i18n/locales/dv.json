@@ -171,8 +171,8 @@
     "enterAdminEmail": "ޑޭޝްބޯޑަށް ވަދެވޭގޮތަށް ތިބާގެ އެޑްމިން އީމެއިލާއި ޕާސްވޯޑް ޖައްސަވާ"
   },
   "bookingForm": {
-    "fullNameOrEmployeeId": " ނަން / ވަޒީފާގެ އައިޑީ",
-    "typeNameOrEmployeeId": "ހޯދަން ނަން ނުވަތަ އައިޑީ ނަމްބަރ ލިޔުއްވާ",
+    "fullName": "ނަން",
+    "typeFullName": "ހޯދަން ނަން ލިޔުއްވާ",
     "department": "ޑިޕާޓްމަންޓް",
     "pleaseFillEmployeeInfo": "މަޢުލޫމާތު ފުރާލައްވާ",
     "bookingNumber": "ބުކިންގ ނަންބަރު",

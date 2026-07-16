@@ -23,6 +23,7 @@ export default function BookingPage() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>();
   const [slot, setSlot] = useState('');
   const [employeeId, setEmployeeId] = useState('');
+  const [employeeCode, setEmployeeCode] = useState('');
   const [employeeName, setEmployeeName] = useState('');
   const [department, setDepartment] = useState('');
   const [contactNumber, setContactNumber] = useState('');
@@ -64,10 +65,10 @@ export default function BookingPage() {
 
   useEffect(() => {
     const searchEmployeesData = async () => {
-      if (employeeId && employeeId.length >= 2) {
+      if (employeeName && employeeName.length >= 2) {
         setIsSearchingName(true);
         try {
-          const results = await searchEmployees(employeeId);
+          const results = await searchEmployees(employeeName);
           setNameSearchResults(results);
           setShowNameDropdown(results.length > 0);
         } catch (error) {
@@ -85,10 +86,11 @@ export default function BookingPage() {
 
     const debounceTimer = setTimeout(searchEmployeesData, 300);
     return () => clearTimeout(debounceTimer);
-  }, [employeeId]);
+  }, [employeeName]);
 
   const handleEmployeeSelect = (employee: any) => {
     setEmployeeId((employee as any).employeeId || employee.employeeNumber);
+    setEmployeeCode((employee as any).employeeCode || employee.employeeNumber);
     setEmployeeName(employee.fullName);
     setDepartment(employee.department);
     setShowNameDropdown(false);
@@ -97,6 +99,7 @@ export default function BookingPage() {
 
   const clearEmployeeName = () => {
     setEmployeeId('');
+    setEmployeeCode('');
     setEmployeeName('');
     setDepartment('');
     setShowNameDropdown(false);
@@ -191,7 +194,7 @@ export default function BookingPage() {
       }
 
       const bookingData = {
-        employeeId,
+        employeeId: employeeCode,
         employeeName,
         employeeDepartment: department,
         contactNumber,
@@ -339,8 +342,8 @@ export default function BookingPage() {
                 <div className="space-y-2">
                   <Label className="text-sm">{t('auth.employeeId')}</Label>
                   <Input
-                    value={employeeId}
-                    onChange={(e) => setEmployeeId(e.target.value)}
+                    value={employeeCode}
+                    onChange={(e) => setEmployeeCode(e.target.value)}
                     placeholder={t('auth.employeeId')}
                     required
                     className="text-base"
@@ -348,16 +351,16 @@ export default function BookingPage() {
                 </div>
 
                 <div className="space-y-2 relative">
-                  <Label className="text-sm">{t('bookingForm.fullNameOrEmployeeId')}</Label>
+                  <Label className="text-sm">{t('bookingForm.fullName')}</Label>
                   <div className="relative">
                     <Input
-                      value={employeeId}
-                      onChange={(e) => setEmployeeId(e.target.value)}
-                      placeholder={t('bookingForm.typeNameOrEmployeeId')}
+                      value={employeeName}
+                      onChange={(e) => setEmployeeName(e.target.value)}
+                      placeholder={t('bookingForm.typeFullName')}
                       required
                       className="text-base pr-8"
                     />
-                    {employeeId && (
+                    {employeeName && (
                       <button
                         type="button"
                         onClick={clearEmployeeName}
@@ -377,13 +380,13 @@ export default function BookingPage() {
                         >
                           <div className="font-medium text-sm">{employee.fullName}</div>
                           <div className="text-xs text-gray-500">
-                            {(employee as any).employeeId || employee.employeeNumber} • {employee.department}
+                            {(employee as any).employeeCode || (employee as any).employeeNumber} • {employee.department}
                           </div>
                         </div>
                       ))}
                     </div>
                   )}
-                  {isSearchingName && employeeId.length >= 2 && (
+                  {isSearchingName && employeeName.length >= 2 && (
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg px-4 py-3 text-sm text-gray-500">
                       {t('common.search')}...
                     </div>

@@ -171,8 +171,8 @@
     "enterAdminEmail": "ഡാഷ്ബോർഡിലേക്ക് പ്രവേശിക്കാൻ നിങ്ങളുടെ അഡ്മിൻ ഇമെയിലും പാസ്‌വേഡും നൽകുക"
   },
   "bookingForm": {
-    "fullNameOrEmployeeId": "മുഴു പേര് / ജീവനക്കാരൻ ഐഡി",
-    "typeNameOrEmployeeId": "തിരയാൻ പേര് അല്ലെങ്കിൽ ജീവനക്കാരൻ ഐഡി ടൈപ്പ് ചെയ്യുക",
+    "fullName": "മുഴു പേര്",
+    "typeFullName": "തിരയാൻ പേര് ടൈപ്പ് ചെയ്യുക",
     "department": "വകുപ്പ്",
     "pleaseFillEmployeeInfo": "ജീവനക്കാരൻ വിവരങ്ങൾ നിറയ്ക്കുക",
     "bookingNumber": "ബുക്കിംഗ് നമ്പർ",

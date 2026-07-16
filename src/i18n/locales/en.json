@@ -171,8 +171,8 @@
     "enterAdminEmail": "Enter your admin email and password to access the dashboard"
   },
   "bookingForm": {
-    "fullNameOrEmployeeId": "Full Name / Employee ID",
-    "typeNameOrEmployeeId": "Type name or employee ID to search",
+    "fullName": "Full Name",
+    "typeFullName": "Type full name to search",
     "department": "Department",
     "pleaseFillEmployeeInfo": "Please fill in employee information",
     "bookingNumber": "Booking Number",

@@ -171,8 +171,8 @@
     "enterAdminEmail": "डैशबोर्ड तक पहुंचने के लिए अपना एडमिन ईमेल और पासवर्ड दर्ज करें"
   },
   "bookingForm": {
-    "fullNameOrEmployeeId": "पूरा नाम / कर्मचारी आईडी",
-    "typeNameOrEmployeeId": "खोजने के लिए नाम या कर्मचारी आईडी टाइप करें",
+    "fullName": "पूरा नाम",
+    "typeFullName": "खोजने के लिए नाम टाइप करें",
     "department": "विभाग",
     "pleaseFillEmployeeInfo": "कृपया कर्मचारी जानकारी भरें",
     "bookingNumber": "बुकिंग नंबर",

@@ -171,8 +171,8 @@
     "enterAdminEmail": "ড্যাশবোর্ডে প্রবেশ করতে আপনার অ্যাডমিন ইমেল এবং পাসওয়ার্ড লিখুন"
   },
   "bookingForm": {
-    "fullNameOrEmployeeId": "পূর্ণ নাম / কর্মচারী আইডি",
-    "typeNameOrEmployeeId": "অনুসন্ধান করতে নাম বা কর্মচারী আইডি টাইপ করুন",
+    "fullName": "পূর্ণ নাম",
+    "typeFullName": "অনুসন্ধান করতে নাম টাইপ করুন",
     "department": "বিভাগ",
     "pleaseFillEmployeeInfo": "কর্মচারী তথ্য পূরণ করুন",
     "bookingNumber": "বুকিং নম্বর",
