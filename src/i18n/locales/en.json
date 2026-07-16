@@ -38,7 +38,7 @@
     "bookingDate": "Booking Date",
     "bookingTime": "Booking Time",
     "numberOfGuests": "Number of Guests",
-    "purpose": "Purpose",
+    "contactNumber": "Contact Number",
     "remarks": "Remarks",
     "agreement": "Kitchen Agreement",
     "agreeToRules": "I agree to all kitchen rules",
@@ -59,13 +59,13 @@
   },
   "agreement": {
     "title": "KITCHEN USE AGREEMENT",
-    "intro": "I hereby agree to the following terms regarding use of the kitchen.",
-    "rule1": "I will clean the kitchen immediately after cooking.",
-    "rule2": "I will wash all utensils, pots and equipment before leaving.",
-    "rule3": "I will use all equipment carefully.",
+    "intro": "We hereby agree to the following terms regarding use of the kitchen.",
+    "rule1": "We will clean the kitchen immediately after cooking.",
+    "rule2": "We will wash all utensils, pots and equipment before leaving.",
+    "rule3": "We will use all equipment carefully.",
     "rule4": "Any damaged equipment will be reported immediately.",
-    "rule5": "I will leave the kitchen clean for the next user.",
-    "rule6": "I understand failure to follow these rules may result in disciplinary action."
+    "rule5": "We will leave the kitchen clean for the next user.",
+    "rule6": "We understand failure to follow these rules may result in disciplinary action."
   },
   "purpose": {
     "familyBBQ": "Family BBQ",

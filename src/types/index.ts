@@ -18,10 +18,10 @@ export interface Booking {
   employeeId: string;
   employeeName: string;
   employeeDepartment: string;
+  contactNumber?: string;
   bookingDate: string;
   slot: string;
   pax: number;
-  purpose: string;
   remarks?: string;
   agreement: boolean;
   status: 'booked' | 'completed' | 'cancelled' | 'no_show';

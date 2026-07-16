@@ -22,13 +22,13 @@ function generateBookingPassword(): string {
 }
 
 const TIME_SLOTS = [
-  '08:00–10:00',
-  '10:00–12:00',
-  '12:00–14:00',
-  '14:00–16:00',
-  '16:00–18:00',
-  '18:00–20:00',
-  '20:00–22:00',
+  '09:00–11:00',
+  '11:00–13:00',
+  '13:00–15:00',
+  '15:00–17:00',
+  '17:00–19:00',
+  '19:00–21:00',
+  '21:00–23:00',
 ];
 
 export async function getBookingsByDate(date: string) {
@@ -68,7 +68,6 @@ export async function getAvailableSlots(date: string): Promise<string[]> {
 }
 
 export async function createBooking(bookingData: Partial<Booking>) {
-  const sanitizedPurpose = sanitizeInput(bookingData.purpose || '');
   const sanitizedRemarks = sanitizeInput(bookingData.remarks || '');
   
   if (!validateBookingDate(bookingData.bookingDate!)) {
@@ -102,7 +101,6 @@ export async function createBooking(bookingData: Partial<Booking>) {
   
   const data = {
     ...bookingData,
-    purpose: sanitizedPurpose,
     remarks: sanitizedRemarks,
     status: 'booked',
     approvalStatus: 'pending', // New bookings require admin approval

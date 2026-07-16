@@ -25,8 +25,8 @@ export default function BookingPage() {
   const [employeeId, setEmployeeId] = useState('');
   const [employeeName, setEmployeeName] = useState('');
   const [department, setDepartment] = useState('');
+  const [contactNumber, setContactNumber] = useState('');
   const [pax, setPax] = useState(1);
-  const [purpose, setPurpose] = useState('');
   const [remarks, setRemarks] = useState('');
   const [agreement, setAgreement] = useState(false);
   const [availableSlots, setAvailableSlots] = useState<string[]>([]);
@@ -43,13 +43,13 @@ export default function BookingPage() {
   const [showSignatureModal, setShowSignatureModal] = useState(false);
 
   const TIME_SLOTS = [
-    '08:00–10:00',
-    '10:00–12:00',
-    '12:00–14:00',
-    '14:00–16:00',
-    '16:00–18:00',
-    '18:00–20:00',
-    '20:00–22:00',
+    '09:00–11:00',
+    '11:00–13:00',
+    '13:00–15:00',
+    '15:00–17:00',
+    '17:00–19:00',
+    '19:00–21:00',
+    '21:00–23:00',
   ];
 
   useEffect(() => {
@@ -64,10 +64,10 @@ export default function BookingPage() {
 
   useEffect(() => {
     const searchEmployeesData = async () => {
-      if (employeeName.length >= 2) {
+      if (employeeId.length >= 2) {
         setIsSearchingName(true);
         try {
-          const results = await searchEmployees(employeeName);
+          const results = await searchEmployees(employeeId);
           setNameSearchResults(results);
           setShowNameDropdown(results.length > 0);
         } catch (error) {
@@ -85,7 +85,7 @@ export default function BookingPage() {
 
     const debounceTimer = setTimeout(searchEmployeesData, 300);
     return () => clearTimeout(debounceTimer);
-  }, [employeeName]);
+  }, [employeeId]);
 
   const handleEmployeeSelect = (employee: any) => {
     setEmployeeId(employee.employeeNumber);
@@ -96,8 +96,8 @@ export default function BookingPage() {
   };
 
   const clearEmployeeName = () => {
-    setEmployeeName('');
     setEmployeeId('');
+    setEmployeeName('');
     setDepartment('');
     setShowNameDropdown(false);
     setNameSearchResults([]);
@@ -194,10 +194,10 @@ export default function BookingPage() {
         employeeId,
         employeeName,
         employeeDepartment: department,
+        contactNumber,
         bookingDate: format(selectedDate, 'yyyy-MM-dd'),
         slot,
         pax,
-        purpose,
         remarks,
         agreement: true,
         signature: signatureUrl,
@@ -224,14 +224,6 @@ export default function BookingPage() {
       setIsLoading(false);
     }
   };
-
-  const PURPOSES = [
-    'familyBBQ',
-    'birthday',
-    'friendsGathering',
-    'teamDinner',
-    'other',
-  ];
 
   const getAvailabilityColor = (available: number) => {
     if (available === 7) return 'bg-green-500';
@@ -359,13 +351,13 @@ export default function BookingPage() {
                   <Label className="text-sm">{t('bookingForm.fullNameOrEmployeeId')}</Label>
                   <div className="relative">
                     <Input
-                      value={employeeName}
-                      onChange={(e) => setEmployeeName(e.target.value)}
+                      value={employeeId}
+                      onChange={(e) => setEmployeeId(e.target.value)}
                       placeholder={t('bookingForm.typeNameOrEmployeeId')}
                       required
                       className="text-base pr-8"
                     />
-                    {employeeName && (
+                    {employeeId && (
                       <button
                         type="button"
                         onClick={clearEmployeeName}
@@ -391,7 +383,7 @@ export default function BookingPage() {
                       ))}
                     </div>
                   )}
-                  {isSearchingName && employeeName.length >= 2 && (
+                  {isSearchingName && employeeId.length >= 2 && (
                     <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg px-4 py-3 text-sm text-gray-500">
                       {t('common.search')}...
                     </div>
@@ -518,15 +510,15 @@ export default function BookingPage() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm">{t('booking.purpose')}</Label>
-                <Select value={purpose} onChange={(e) => setPurpose(e.target.value)} required className="text-base">
-                  <option value="">{t('booking.purpose')}</option>
-                  {PURPOSES.map((p) => (
-                    <option key={p} value={p}>
-                      {t(`purpose.${p}`)}
-                    </option>
-                  ))}
-                </Select>
+                <Label className="text-sm">{t('booking.contactNumber')}</Label>
+                <Input
+                  type="tel"
+                  value={contactNumber}
+                  onChange={(e) => setContactNumber(e.target.value)}
+                  required
+                  className="text-base"
+                  placeholder={t('booking.contactNumber')}
+                />
               </div>
 
               <div className="space-y-2">
