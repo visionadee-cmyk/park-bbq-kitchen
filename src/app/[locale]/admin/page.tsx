@@ -330,8 +330,8 @@ export default function AdminPage() {
                         <p className="font-medium">{booking.pax}</p>
                       </div>
                       <div>
-                        <span className="text-gray-500">Purpose:</span>
-                        <p className="font-medium">{booking.purpose}</p>
+                        <span className="text-gray-500">Contact:</span>
+                        <p className="font-medium">{booking.contactNumber || 'N/A'}</p>
                       </div>
                     </div>
                     <div className="flex gap-2">
@@ -544,7 +544,7 @@ export default function AdminPage() {
                     <TableHead className="text-xs sm:text-sm">{t('employee.name')}</TableHead>
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('employee.department')}</TableHead>
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('booking.numberOfGuests')}</TableHead>
-                    <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('booking.purpose')}</TableHead>
+                    <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('booking.contactNumber')}</TableHead>
                     <TableHead className="text-xs sm:text-sm">{t('status.booked')}</TableHead>
                     <TableHead className="text-xs sm:text-sm">Approval</TableHead>
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('common.edit')}</TableHead>
@@ -576,7 +576,7 @@ export default function AdminPage() {
                       <TableCell>{booking.employeeName}</TableCell>
                       <TableCell>{booking.employeeDepartment}</TableCell>
                       <TableCell>{booking.pax}</TableCell>
-                      <TableCell>{booking.purpose}</TableCell>
+                      <TableCell>{booking.contactNumber || 'N/A'}</TableCell>
                       <TableCell>
                         <Badge variant={getStatusColor(booking.status) as any}>
                           {t(`status.${booking.status}`)}

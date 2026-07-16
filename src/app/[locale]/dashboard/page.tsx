@@ -142,7 +142,7 @@ export default function DashboardPage() {
                     <TableHead>{t('booking.bookingDate')}</TableHead>
                     <TableHead>{t('booking.bookingTime')}</TableHead>
                     <TableHead>{t('booking.numberOfGuests')}</TableHead>
-                    <TableHead>{t('booking.purpose')}</TableHead>
+                    <TableHead>{t('booking.contactNumber')}</TableHead>
                     <TableHead>{t('status.booked')}</TableHead>
                     <TableHead>{t('common.edit')}</TableHead>
                   </TableRow>
@@ -153,7 +153,7 @@ export default function DashboardPage() {
                       <TableCell>{booking.bookingDate}</TableCell>
                       <TableCell>{booking.slot}</TableCell>
                       <TableCell>{booking.pax}</TableCell>
-                      <TableCell>{booking.purpose}</TableCell>
+                      <TableCell>{booking.contactNumber || 'N/A'}</TableCell>
                       <TableCell>
                         <Badge variant={getStatusColor(booking.status) as any}>
                           {t(`status.${booking.status}`)}

@@ -98,7 +98,7 @@ export default function ManageBookingPage() {
     e.preventDefault();
     
     if (!requestedDate || !requestedSlot || !changeReason) {
-      setError(t('booking.purpose') + ' ' + t('common.required'));
+      setError(t('common.reason') + ' ' + t('common.required'));
       return;
     }
 
@@ -309,8 +309,8 @@ export default function ManageBookingPage() {
                     <div className="text-sm sm:text-base font-medium">{booking.pax}</div>
                   </div>
                   <div className="space-y-1">
-                    <Label className="text-xs text-gray-600">{t('booking.purpose')}</Label>
-                    <div className="text-sm sm:text-base font-medium">{booking.purpose}</div>
+                    <Label className="text-xs text-gray-600">{t('booking.contactNumber')}</Label>
+                    <div className="text-sm sm:text-base font-medium">{booking.contactNumber || 'N/A'}</div>
                   </div>
                 </div>
 
@@ -353,7 +353,7 @@ export default function ManageBookingPage() {
                       {t('calendar.selected')}: {format(new Date(booking.requestedDate), 'MMM d, yyyy')} at {booking.requestedSlot}
                     </p>
                     {booking.changeRequestReason && (
-                      <p className="text-sm text-orange-700 mt-1">{t('booking.purpose')}: {booking.changeRequestReason}</p>
+                      <p className="text-sm text-orange-700 mt-1">{t('common.reason')}: {booking.changeRequestReason}</p>
                     )}
                   </div>
                 )}
@@ -361,7 +361,7 @@ export default function ManageBookingPage() {
                 {booking.approvalStatus === 'rejected' && booking.changeRequestReason && (
                   <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                     <h4 className="font-semibold text-red-900 mb-2">{t('status.cancelled')}</h4>
-                    <p className="text-sm text-red-800">{t('booking.purpose')}: {booking.changeRequestReason}</p>
+                    <p className="text-sm text-red-800">{t('common.reason')}: {booking.changeRequestReason}</p>
                   </div>
                 )}
 
@@ -526,7 +526,7 @@ export default function ManageBookingPage() {
                   </select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="changeReason" className="text-sm">{t('booking.purpose')}</Label>
+                  <Label htmlFor="changeReason" className="text-sm">{t('common.reason')}</Label>
                   <textarea
                     id="changeReason"
                     value={changeReason}

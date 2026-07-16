@@ -53,20 +53,6 @@ export default function AdminReportsPage() {
       .map(([name, value]) => ({ name, value }));
   };
 
-  const getPurposeData = () => {
-    const purposeMap: Record<string, number> = {};
-    bookings.forEach(b => {
-      purposeMap[b.purpose] = (purposeMap[b.purpose] || 0) + 1;
-    });
-    return Object.entries(purposeMap).map(([name, value]) => ({ name, value }));
-  };
-
-  const getAverageGuests = () => {
-    if (bookings.length === 0) return 0;
-    const total = bookings.reduce((sum, b) => sum + b.pax, 0);
-    return Math.round(total / bookings.length);
-  };
-
   const getKitchenUtilization = () => {
     const totalSlots = 7; // 7 time slots per day
     const uniqueDates = new Set(bookings.map(b => b.bookingDate));
@@ -75,15 +61,21 @@ export default function AdminReportsPage() {
     return Math.round((bookings.length / totalPossibleSlots) * 100);
   };
 
+  const getAverageGuests = () => {
+    if (bookings.length === 0) return 0;
+    const total = bookings.reduce((sum, b) => sum + b.pax, 0);
+    return Math.round(total / bookings.length);
+  };
+
   const exportToExcel = () => {
-    const headers = ['Date', 'Time', 'Employee', 'Department', 'Guests', 'Purpose', 'Status'];
+    const headers = ['Date', 'Time', 'Employee', 'Department', 'Guests', 'Contact', 'Status'];
     const rows = bookings.map(b => [
       b.bookingDate,
       b.slot,
       b.employeeName,
       b.employeeDepartment,
       b.pax,
-      b.purpose,
+      b.contactNumber || 'N/A',
       b.status,
     ]);
     
@@ -193,33 +185,6 @@ export default function AdminReportsPage() {
                     dataKey="value"
                   >
                     {getDepartmentData().map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('reports.bookingsByPurpose')}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={getPurposeData()}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={(entry) => entry.name}
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {getPurposeData().map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
