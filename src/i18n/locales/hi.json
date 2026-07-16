@@ -48,10 +48,12 @@
     "alreadyBooked": "आपके पास इस तारीख के लिए पहले से बुकिंग है",
     "slotUnavailable": "यह स्लॉट उपलब्ध नहीं है",
     "maxGuests": "अधिकतम 50 मेहमान",
+    "selectSlot": "समय स्लॉट चुनें",
+    "selectDateFirst": "पहले तारीख चुनें",
+    "noAvailableSlots": "इस तारीख के लिए कोई स्लॉट उपलब्ध नहीं है",
     "pastDate": "बीती तारीख नहीं चुन सकते",
     "maxDaysAhead": "अधिकतम 30 दिन आगे",
     "selectDate": "तारीख चुनें",
-    "selectSlot": "समय स्लॉट चुनें",
     "available": "उपलब्ध",
     "booked": "बुक किया गया"
   },

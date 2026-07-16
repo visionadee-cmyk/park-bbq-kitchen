@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { getBookingByCredentials, cancelBooking, requestBookingChange, updateBooking } from '@/lib/bookings';
+import { getBookingByCredentials, cancelBooking, requestBookingChange, updateBooking, getAvailableSlots } from '@/lib/bookings';
 import { ArrowLeft, Calendar as CalendarIcon, Clock, Users, AlertCircle, Edit, Upload, CheckCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import { uploadToCloudinary } from '@/lib/cloudinaryUpload';
@@ -26,6 +26,7 @@ export default function ManageBookingPage() {
   const [requestedDate, setRequestedDate] = useState('');
   const [requestedSlot, setRequestedSlot] = useState('');
   const [changeReason, setChangeReason] = useState('');
+  const [availableSlots, setAvailableSlots] = useState<string[]>([]);
   
   // Kitchen checklist items
   const [checklistItems, setChecklistItems] = useState({
@@ -109,6 +110,7 @@ export default function ManageBookingPage() {
       setRequestedDate('');
       setRequestedSlot('');
       setChangeReason('');
+      setAvailableSlots([]);
       
       // Refresh booking data
       await new Promise(resolve => setTimeout(resolve, 500)); // Small delay to ensure Firestore update
@@ -120,6 +122,22 @@ export default function ManageBookingPage() {
       setError(t('manageBooking.cancelBookingFailed'));
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleDateChange = async (date: string) => {
+    setRequestedDate(date);
+    setRequestedSlot(''); // Reset slot when date changes
+    setAvailableSlots([]);
+    
+    if (date) {
+      try {
+        const slots = await getAvailableSlots(date);
+        setAvailableSlots(slots);
+      } catch (error) {
+        console.error('Error fetching available slots:', error);
+        setAvailableSlots([]);
+      }
     }
   };
 
@@ -483,7 +501,7 @@ export default function ManageBookingPage() {
                     id="requestedDate"
                     type="date"
                     value={requestedDate}
-                    onChange={(e) => setRequestedDate(e.target.value)}
+                    onChange={(e) => handleDateChange(e.target.value)}
                     required
                     className="text-base"
                     min={new Date().toISOString().split('T')[0]}
@@ -496,10 +514,11 @@ export default function ManageBookingPage() {
                     value={requestedSlot}
                     onChange={(e) => setRequestedSlot(e.target.value)}
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-base"
+                    disabled={!requestedDate || availableSlots.length === 0}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-base disabled:bg-gray-100 disabled:cursor-not-allowed"
                   >
-                    <option value="">{t('booking.selectSlot')}</option>
-                    {TIME_SLOTS.map(slot => (
+                    <option value="">{requestedDate ? (availableSlots.length === 0 ? t('booking.noAvailableSlots') : t('booking.selectSlot')) : t('booking.selectDateFirst')}</option>
+                    {availableSlots.map(slot => (
                       <option key={slot} value={slot}>{slot}</option>
                     ))}
                   </select>

@@ -48,10 +48,12 @@
     "alreadyBooked": "You already have a booking for this date",
     "slotUnavailable": "This slot is not available",
     "maxGuests": "Maximum 50 guests allowed",
+    "selectSlot": "Select a time slot",
+    "selectDateFirst": "Select a date first",
+    "noAvailableSlots": "No available slots for this date",
     "pastDate": "Cannot select past dates",
     "maxDaysAhead": "Maximum 30 days ahead",
     "selectDate": "Select a date",
-    "selectSlot": "Select a time slot",
     "available": "Available",
     "booked": "Booked"
   },
