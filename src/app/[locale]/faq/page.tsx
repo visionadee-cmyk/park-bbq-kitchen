@@ -25,7 +25,7 @@ export default function FAQPage() {
     general: [
       {
         q: "Do I need to login to use the app?",
-        a: "No, employees don't need to login. Simply open the app URL and click \"Book Now\" or \"Manage Booking\". Only admins need to login."
+        a: "No, employees don't need to login. Simply open the app URL and click \"Book Now\" or \"Manage Booking\"."
       },
       {
         q: "What languages are supported?",
@@ -100,24 +100,6 @@ export default function FAQPage() {
       {
         q: "Can I complete the cleanup checklist after my booking time?",
         a: "Yes, you can complete it anytime after your booking, but you should do it as soon as possible."
-      }
-    ],
-    admin: [
-      {
-        q: "How do I access the admin panel?",
-        a: "Navigate to /login and enter your admin Employee ID and password."
-      },
-      {
-        q: "Can I view all booking credentials?",
-        a: "Yes, the admin panel shows all booking numbers and passwords for assisting users."
-      },
-      {
-        q: "Can I approve change requests?",
-        a: "Yes, use the ✓ button to approve and ✗ button to reject change requests."
-      },
-      {
-        q: "Can I view cleanup photos and signatures?",
-        a: "Yes, click \"View\" in the respective columns to see photos and signatures."
       }
     ],
     technical: [
@@ -261,33 +243,6 @@ export default function FAQPage() {
           {expandedSections.includes('cleanup') && (
             <CardContent className="space-y-4">
               {faqs.cleanup.map((faq, index) => (
-                <div key={index} className="border-b pb-4 last:border-0 last:pb-0">
-                  <h3 className="font-semibold text-gray-900 mb-2">{faq.q}</h3>
-                  <p className="text-gray-600">{faq.a}</p>
-                </div>
-              ))}
-            </CardContent>
-          )}
-        </Card>
-
-        {/* Admin Questions */}
-        <Card className="mb-6">
-          <CardHeader 
-            className="cursor-pointer hover:bg-gray-50 transition-colors"
-            onClick={() => toggleSection('admin')}
-          >
-            <div className="flex justify-between items-center">
-              <CardTitle className="text-xl">Admin Questions</CardTitle>
-              {expandedSections.includes('admin') ? (
-                <ChevronUp className="w-5 h-5" />
-              ) : (
-                <ChevronDown className="w-5 h-5" />
-              )}
-            </div>
-          </CardHeader>
-          {expandedSections.includes('admin') && (
-            <CardContent className="space-y-4">
-              {faqs.admin.map((faq, index) => (
                 <div key={index} className="border-b pb-4 last:border-0 last:pb-0">
                   <h3 className="font-semibold text-gray-900 mb-2">{faq.q}</h3>
                   <p className="text-gray-600">{faq.a}</p>
