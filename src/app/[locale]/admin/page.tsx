@@ -31,6 +31,8 @@ export default function AdminPage() {
   const [filterDate, setFilterDate] = useState('all');
   const [showApprovalRequests, setShowApprovalRequests] = useState(false);
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [selectedCleanupImage, setSelectedCleanupImage] = useState<string | null>(null);
+  const [selectedSignature, setSelectedSignature] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user || user.role !== 'admin') {
@@ -611,6 +613,8 @@ export default function AdminPage() {
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('booking.contactNumber')}</TableHead>
                     <TableHead className="text-xs sm:text-sm">Booking Code</TableHead>
                     <TableHead className="text-xs sm:text-sm">Password</TableHead>
+                    <TableHead className="text-xs sm:text-sm">Cleanup Photo</TableHead>
+                    <TableHead className="text-xs sm:text-sm">Signature</TableHead>
                     <TableHead className="text-xs sm:text-sm">{t('status.booked')}</TableHead>
                     <TableHead className="text-xs sm:text-sm">Approval</TableHead>
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('common.edit')}</TableHead>
@@ -645,6 +649,32 @@ export default function AdminPage() {
                       <TableCell>{booking.contactNumber || 'N/A'}</TableCell>
                       <TableCell className="font-mono text-xs">{booking.bookingNumber || 'N/A'}</TableCell>
                       <TableCell className="font-mono text-xs">{booking.bookingPassword || 'N/A'}</TableCell>
+                      <TableCell>
+                        {booking.kitchenImage ? (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setSelectedCleanupImage(booking.kitchenImage!)}
+                          >
+                            View
+                          </Button>
+                        ) : (
+                          <span className="text-gray-400 text-xs">N/A</span>
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {booking.signature ? (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setSelectedSignature(booking.signature!)}
+                          >
+                            View
+                          </Button>
+                        ) : (
+                          <span className="text-gray-400 text-xs">N/A</span>
+                        )}
+                      </TableCell>
                       <TableCell>
                         <Badge variant={getStatusColor(booking.status) as any}>
                           {t(`status.${booking.status}`)}
@@ -704,6 +734,40 @@ export default function AdminPage() {
           </CardContent>
         </Card>
       </main>
+
+      {/* Cleanup Image Modal */}
+      {selectedCleanupImage && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedCleanupImage(null)}>
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto">
+            <div className="p-4">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-bold">Cleanup Photo</h3>
+                <Button variant="ghost" size="sm" onClick={() => setSelectedCleanupImage(null)}>
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+              <img src={selectedCleanupImage} alt="Cleanup photo" className="w-full h-auto rounded" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Signature Modal */}
+      {selectedSignature && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" onClick={() => setSelectedSignature(null)}>
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-auto">
+            <div className="p-4">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-bold">Signature</h3>
+                <Button variant="ghost" size="sm" onClick={() => setSelectedSignature(null)}>
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+              <img src={selectedSignature} alt="Signature" className="w-full h-auto rounded" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
