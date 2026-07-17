@@ -609,6 +609,8 @@ export default function AdminPage() {
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('employee.department')}</TableHead>
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('booking.numberOfGuests')}</TableHead>
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('booking.contactNumber')}</TableHead>
+                    <TableHead className="text-xs sm:text-sm">Booking Code</TableHead>
+                    <TableHead className="text-xs sm:text-sm">Password</TableHead>
                     <TableHead className="text-xs sm:text-sm">{t('status.booked')}</TableHead>
                     <TableHead className="text-xs sm:text-sm">Approval</TableHead>
                     <TableHead className="text-xs sm:text-sm hidden sm:table-cell">{t('common.edit')}</TableHead>
@@ -641,6 +643,8 @@ export default function AdminPage() {
                       <TableCell>{booking.employeeDepartment}</TableCell>
                       <TableCell>{booking.pax}</TableCell>
                       <TableCell>{booking.contactNumber || 'N/A'}</TableCell>
+                      <TableCell className="font-mono text-xs">{booking.bookingNumber || 'N/A'}</TableCell>
+                      <TableCell className="font-mono text-xs">{booking.bookingPassword || 'N/A'}</TableCell>
                       <TableCell>
                         <Badge variant={getStatusColor(booking.status) as any}>
                           {t(`status.${booking.status}`)}
