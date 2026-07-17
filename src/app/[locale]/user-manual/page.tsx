@@ -154,81 +154,6 @@ export default function UserManualPage() {
           )}
         </Card>
 
-        {/* Admin Guide Section */}
-        <Card className="mb-6">
-          <CardHeader 
-            className="cursor-pointer hover:bg-gray-50 transition-colors"
-            onClick={() => toggleSection('admin-guide')}
-          >
-            <div className="flex justify-between items-center">
-              <CardTitle className="text-xl">Admin Guide</CardTitle>
-              {expandedSections.includes('admin-guide') ? (
-                <ChevronUp className="w-5 h-5" />
-              ) : (
-                <ChevronDown className="w-5 h-5" />
-              )}
-            </div>
-          </CardHeader>
-          {expandedSections.includes('admin-guide') && (
-            <CardContent className="space-y-6">
-              <div>
-                <h3 className="font-semibold text-lg mb-3">1. Admin Login</h3>
-                <ol className="list-decimal list-inside space-y-2 text-gray-600">
-                  <li>Open the application URL</li>
-                  <li>Click "Admin Login" or navigate to /login</li>
-                  <li>Enter your Employee ID</li>
-                  <li>Enter your password</li>
-                  <li>Click "Login"</li>
-                </ol>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-lg mb-3">2. Admin Dashboard</h3>
-                <p className="text-gray-600 mb-3">The admin dashboard provides statistics, booking status counts, recent bookings, approval management, and navigation to Reports page.</p>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-lg mb-3">3. Managing Bookings</h3>
-                <p className="text-gray-600 mb-3">All bookings are displayed in a table. You can filter by status, date, or search term. View booking details including date, time, employee info, booking code/password, cleanup photo, and signature.</p>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-lg mb-3">4. Viewing Cleanup Photos and Signatures</h3>
-                <ol className="list-decimal list-inside space-y-2 text-gray-600">
-                  <li>In the bookings table, find the "Cleanup Photo" column</li>
-                  <li>Click "View" button to see the cleanup photo</li>
-                  <li>In the "Signature" column, click "View" to see the signature</li>
-                  <li>Close the modal by clicking outside or the X button</li>
-                </ol>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-lg mb-3">5. Approving/Rejecting Change Requests</h3>
-                <ol className="list-decimal list-inside space-y-2 text-gray-600">
-                  <li>The booking will show "Change Requested" status</li>
-                  <li>Click the ✓ button to approve the change</li>
-                  <li>Click the ✗ button to reject the change</li>
-                  <li>If rejected, provide a reason</li>
-                </ol>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-lg mb-3">6. Cancelling Bookings</h3>
-                <ol className="list-decimal list-inside space-y-2 text-gray-600">
-                  <li>Find the booking you want to cancel</li>
-                  <li>Click the delete/trash icon</li>
-                  <li>Confirm the cancellation</li>
-                </ol>
-              </div>
-
-              <div>
-                <h3 className="font-semibold text-lg mb-3">7. Reports and Analytics</h3>
-                <p className="text-gray-600 mb-3">Access the Reports page to view bookings by department, bookings by employee, peak hours analysis, and kitchen utilization statistics. Filter by date range and download options.</p>
-              </div>
-            </CardContent>
-          )}
-        </Card>
-
         {/* Quick Reference Section */}
         <Card className="mb-6">
           <CardHeader 
@@ -249,10 +174,6 @@ export default function UserManualPage() {
               <div>
                 <h3 className="font-semibold mb-2">Employee Workflow</h3>
                 <p className="text-gray-600">Open App → Click Book Now → Fill Details → Sign → Get Credentials → Use Kitchen → Complete Cleanup → Book Again</p>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Admin Workflow</h3>
-                <p className="text-gray-600">Login → Review Bookings → Approve/Reject Changes → View Photos/Signatures → Generate Reports</p>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Booking Status Meanings</h3>
