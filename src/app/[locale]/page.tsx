@@ -49,6 +49,14 @@ export default function HomePage() {
               <Button variant="outline" onClick={() => router.push('/manage-booking')} className="w-full text-sm">
                 {t('home.manageBooking')}
               </Button>
+              <div className="flex gap-2">
+                <Button variant="ghost" onClick={() => router.push('/user-manual')} className="flex-1 text-sm">
+                  User Manual
+                </Button>
+                <Button variant="ghost" onClick={() => router.push('/faq')} className="flex-1 text-sm">
+                  FAQ
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>

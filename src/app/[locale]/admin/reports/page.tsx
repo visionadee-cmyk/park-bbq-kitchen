@@ -200,6 +200,12 @@ export default function AdminReportsPage() {
             <Button variant={pathname === '/admin/reports' ? 'default' : 'ghost'} onClick={() => router.push('/admin/reports')}>
               {t('admin.reports')}
             </Button>
+            <Button variant="ghost" onClick={() => router.push('/user-manual')}>
+              User Manual
+            </Button>
+            <Button variant="ghost" onClick={() => router.push('/faq')}>
+              FAQ
+            </Button>
           </nav>
         </div>
       </header>

@@ -80,6 +80,13 @@
             max-width: 100%;
             height: auto;
         }
+        #qrCanvas {
+            display: none;
+        }
+        #brandedQR {
+            margin-top: 30px;
+            display: none;
+        }
         .download-btn {
             background: #28a745;
             margin-top: 20px;
@@ -114,6 +121,8 @@
         <button onclick="generateQRCode()">Generate QR Code</button>
         
         <div id="qrcode"></div>
+        <img id="brandedQR" alt="Branded QR Code" />
+        <canvas id="qrCanvas"></canvas>
         
         <button id="downloadBtn" class="download-btn" onclick="downloadQRCode()" style="display: none;">
             Download QR Code
@@ -151,19 +160,76 @@
                 correctLevel: QRCode.CorrectLevel.H
             });
 
+            // Wait for QR code to generate, then add branding
+            setTimeout(() => {
+                addBranding();
+            }, 100);
+        }
+
+        function addBranding() {
+            const qrImg = document.querySelector('#qrcode img');
+            if (!qrImg) return;
+
+            const canvas = document.getElementById('qrCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size (QR code + padding + header)
+            const qrSize = 256;
+            const padding = 20;
+            const headerHeight = 60;
+            canvas.width = qrSize + padding * 2;
+            canvas.height = qrSize + padding * 2 + headerHeight;
+
+            // Fill background
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add border/frame
+            ctx.strokeStyle = '#667eea';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(2, 2, canvas.width - 4, canvas.height - 4);
+
+            // Add header background
+            ctx.fillStyle = '#667eea';
+            ctx.fillRect(padding, padding, qrSize, headerHeight);
+
+            // Add app name text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Park BBQ Kitchen', canvas.width / 2, padding + headerHeight / 2);
+
+            // Add subtitle
+            ctx.font = '12px Arial';
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText('Booking System', canvas.width / 2, padding + headerHeight / 2 + 20);
+
+            // Draw QR code
+            const qrY = padding + headerHeight + padding;
+            ctx.drawImage(qrImg, padding, qrY, qrSize, qrSize);
+
+            // Convert canvas to image
+            const brandedQR = document.getElementById('brandedQR');
+            brandedQR.src = canvas.toDataURL('image/png');
+            brandedQR.style.display = 'block';
+            brandedQR.style.maxWidth = '100%';
+            brandedQR.style.height = 'auto';
+            brandedQR.style.borderRadius = '10px';
+
+            // Hide original QR code
+            document.getElementById('qrcode').style.display = 'none';
+
+            // Show download button
             document.getElementById('downloadBtn').style.display = 'block';
         }
 
         function downloadQRCode() {
-            const qrcodeContainer = document.getElementById('qrcode');
-            const img = qrcodeContainer.querySelector('img');
-            
-            if (img) {
-                const link = document.createElement('a');
-                link.href = img.src;
-                link.download = 'park-bbq-kitchen-qr.png';
-                link.click();
-            }
+            const canvas = document.getElementById('qrCanvas');
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'park-bbq-kitchen-qr-code.png';
+            link.click();
         }
 
         // Generate QR code on page load with default URL
