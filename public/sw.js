@@ -1,4 +1,4 @@
-const CACHE_NAME = 'park-bbq-kitchen-v3';
+const CACHE_NAME = 'park-bbq-kitchen-v4';
 const urlsToCache = [
   '/',
   '/manifest.json',
@@ -18,12 +18,14 @@ self.addEventListener('fetch', (event) => {
   if (event.request.url.includes('/api/') || 
       event.request.url.includes('firebase') ||
       event.request.method !== 'GET') {
-    event.respondWith(fetch(event.request));
+    event.respondWith(
+      fetch(event.request, { redirect: 'follow' })
+    );
     return;
   }
 
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { redirect: 'follow' })
       .then((response) => {
         // Check if we received a valid response
         if (!response || response.status !== 200 || response.type !== 'basic') {

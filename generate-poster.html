@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park BBQ Kitchen - Poster Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .controls {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .controls h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .download-btn {
+            background: #28a745;
+            margin-top: 20px;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+        }
+
+        #posterContainer {
+            background: white;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            display: none;
+        }
+
+        #poster {
+            width: 794px; /* A4 width at 96 DPI */
+            height: 1123px; /* A4 height at 96 DPI */
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poster-header {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .poster-header h1 {
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .poster-header h2 {
+            color: white;
+            font-size: 28px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .poster-content {
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .qr-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .qr-section h3 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        #posterQR {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        #posterQR img {
+            width: 250px;
+            height: 250px;
+        }
+
+        .scan-instruction {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .instructions {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .instructions h3 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #667eea;
+        }
+
+        .instructions ol {
+            color: #555;
+            font-size: 20px;
+            line-height: 1.8;
+            padding-left: 30px;
+        }
+
+        .instructions li {
+            margin-bottom: 15px;
+        }
+
+        .poster-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        #qrcode {
+            display: none;
+        }
+
+        #posterCanvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <h1>🍖 Park BBQ Kitchen Poster Generator</h1>
+        
+        <div class="input-group">
+            <label for="appUrl">App URL:</label>
+            <input 
+                type="url" 
+                id="appUrl" 
+                placeholder="https://your-app-url.com" 
+                value="https://park-bbq-kitchen.vercel.app"
+            >
+        </div>
+
+        <div class="input-group">
+            <label for="instruction">Scan Instruction:</label>
+            <select id="instruction">
+                <option value="Scan to Book">Scan to Book</option>
+                <option value="Scan to Install">Scan to Install</option>
+                <option value="Scan to Access">Scan to Access</option>
+                <option value="Scan to Get Started">Scan to Get Started</option>
+                <option value="Scan Now">Scan Now</option>
+            </select>
+        </div>
+
+        <button onclick="generatePoster()">Generate Poster</button>
+        
+        <div id="posterContainer">
+            <div id="poster">
+                <div class="poster-header">
+                    <h1>Park BBQ Kitchen</h1>
+                    <h2>Booking System</h2>
+                </div>
+                
+                <div class="poster-content">
+                    <div class="qr-section">
+                        <h3>Quick & Easy Booking</h3>
+                        <div id="posterQR"></div>
+                        <div class="scan-instruction" id="scanInstruction">Scan to Book</div>
+                    </div>
+
+                    <div class="instructions">
+                        <h3>How to Use</h3>
+                        <ol>
+                            <li>Open your phone's camera or QR scanner app</li>
+                            <li>Point at the QR code above</li>
+                            <li>Tap the link that appears</li>
+                            <li>Select your language and start booking!</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="poster-footer">
+                    Book the Park BBQ Kitchen for your events • Available 7 days a week
+                </div>
+            </div>
+        </div>
+
+        <button id="downloadBtn" class="download-btn" onclick="downloadPoster()" style="display: none;">
+            Download Poster (A4)
+        </button>
+    </div>
+
+    <div id="qrcode"></div>
+    <canvas id="posterCanvas"></canvas>
+
+    <script>
+        function generatePoster() {
+            const url = document.getElementById('appUrl').value;
+            const instruction = document.getElementById('instruction').value;
+            
+            if (!url) {
+                alert('Please enter an app URL');
+                return;
+            }
+
+            // Update instruction text
+            document.getElementById('scanInstruction').textContent = instruction;
+
+            // Generate QR code
+            const qrcodeContainer = document.getElementById('qrcode');
+            qrcodeContainer.innerHTML = '';
+
+            new QRCode(qrcodeContainer, {
+                text: url,
+                width: 250,
+                height: 250,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Wait for QR code to generate, then add to poster
+            setTimeout(() => {
+                const qrImg = document.querySelector('#qrcode img');
+                if (qrImg) {
+                    const posterQR = document.getElementById('posterQR');
+                    posterQR.innerHTML = '';
+                    posterQR.appendChild(qrImg);
+                    
+                    document.getElementById('posterContainer').style.display = 'block';
+                    document.getElementById('downloadBtn').style.display = 'block';
+                }
+            }, 100);
+        }
+
+        function downloadPoster() {
+            const poster = document.getElementById('poster');
+            
+            // Use html2canvas if available, otherwise use a simple approach
+            const canvas = document.getElementById('posterCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas to A4 size at higher resolution
+            canvas.width = 2480; // A4 width at 300 DPI
+            canvas.height = 3508; // A4 height at 300 DPI
+            
+            // Create a simple download by creating an image from the poster
+            // For a more robust solution, html2canvas library would be needed
+            alert('For best quality, use browser print: Press Ctrl+P (or Cmd+P on Mac) and select "Save as PDF" or print directly. Make sure to select "A4" paper size and scale to fit.');
+            
+            // Alternative: Open print dialog
+            window.print();
+        }
+
+        // Generate poster on page load
+        window.onload = function() {
+            generatePoster();
+        };
+
+        // Add print styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @media print {
+                body {
+                    background: white;
+                    padding: 0;
+                }
+                .controls {
+                    display: none;
+                }
+                #posterContainer {
+                    display: block !important;
+                    box-shadow: none;
+                    margin: 0;
+                }
+                #poster {
+                    box-shadow: none;
+                    margin: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
