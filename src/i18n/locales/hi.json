@@ -119,6 +119,20 @@
     "cancelled": "रद्द किया गया",
     "noShow": "नहीं आए"
   },
+  "cleanup": {
+    "cleanupVerification": "सफाई सत्यापन",
+    "kitchenCleaned": "रसोई साफ की गई",
+    "equipmentReturned": "उपकरण वापस किए गए",
+    "gasTurnedOff": "गैस बंद कर दिया गया",
+    "trashDisposed": "कचरा निपटाया गया",
+    "surfacesWiped": "सतहों को साफ किया गया",
+    "uploadKitchenPhoto": "रसोई की फोटो अपलोड करें",
+    "completeChecklist": "कृपया सभी चेकलिस्ट आइटम पूरा करें",
+    "uploadPhoto": "कृपया सफाई की फोटो अपलोड करें",
+    "submit": "जमा करें",
+    "cancel": "रद्द करें",
+    "unclosedBooking": "आपके पास एक अपूर्ण बुकिंग है। नई बुकिंग करने से पहले सफाई चेकलिस्ट पूरा करें और फोटो अपलोड करें।"
+  },
   "calendar": {
     "monthly": "मासिक",
     "weekly": "साप्ताहिक",

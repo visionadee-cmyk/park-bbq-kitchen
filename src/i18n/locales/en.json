@@ -119,6 +119,20 @@
     "cancelled": "Cancelled",
     "noShow": "No Show"
   },
+  "cleanup": {
+    "cleanupVerification": "Cleanup Verification",
+    "kitchenCleaned": "Kitchen cleaned",
+    "equipmentReturned": "Equipment returned",
+    "gasTurnedOff": "Gas turned off",
+    "trashDisposed": "Trash disposed",
+    "surfacesWiped": "Surfaces wiped",
+    "uploadKitchenPhoto": "Upload Kitchen Photo",
+    "completeChecklist": "Please complete all checklist items",
+    "uploadPhoto": "Please upload a cleanup photo",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "unclosedBooking": "You have an unclosed booking. Please complete the cleanup checklist and upload a photo before making a new booking."
+  },
   "calendar": {
     "monthly": "Monthly",
     "weekly": "Weekly",

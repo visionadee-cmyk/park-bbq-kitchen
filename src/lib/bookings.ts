@@ -82,6 +82,23 @@ export async function createBooking(bookingData: Partial<Booking>) {
     throw new Error('invalid_slot');
   }
   
+  // Check if employee has any unclosed bookings (booked status without completed checklist and photo)
+  const allBookings = await getAllBookings();
+  const hasUnclosedBooking = allBookings.some(
+    b => (b as any).employeeId === bookingData.employeeId && 
+         (b as any).status === 'booked' && 
+         (!b.checklist || !b.kitchenImage || 
+          !b.checklist.kitchenCleaned || 
+          !b.checklist.equipmentReturned || 
+          !b.checklist.gasTurnedOff || 
+          !b.checklist.trashDisposed || 
+          !b.checklist.surfacesWiped)
+  );
+  
+  if (hasUnclosedBooking) {
+    throw new Error('unclosed_booking');
+  }
+  
   const bookings = await getBookingsByDate(bookingData.bookingDate!);
   const hasExistingBooking = bookings.some(
     b => (b as any).employeeId === bookingData.employeeId && (b as any).status === 'booked'

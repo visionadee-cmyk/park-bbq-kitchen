@@ -119,6 +119,20 @@
     "cancelled": "বাতিল",
     "noShow": "উপস্থিত হননি"
   },
+  "cleanup": {
+    "cleanupVerification": "পরিষ্কার যাচাই",
+    "kitchenCleaned": "রান্নাঘর পরিষ্কার করা হয়েছে",
+    "equipmentReturned": "সরঞ্জাম ফেরত দেওয়া হয়েছে",
+    "gasTurnedOff": "গ্যাস বন্ধ করা হয়েছে",
+    "trashDisposed": "আবর্জনা নিষ্পত্তি করা হয়েছে",
+    "surfacesWiped": "পৃষ্ঠতল পরিষ্কার করা হয়েছে",
+    "uploadKitchenPhoto": "রান্নাঘরের ছবি আপলোড করুন",
+    "completeChecklist": "অনুগ্রহ করে সব চেকলিস্ট আইটেম সম্পন্ন করুন",
+    "uploadPhoto": "অনুগ্রহ করে পরিষ্কারের ছবি আপলোড করুন",
+    "submit": "জমা দিন",
+    "cancel": "বাতিল",
+    "unclosedBooking": "আপনার একটি অসম্পন্ন বুকিং আছে। নতুন বুকিং করার আগে পরিষ্কার চেকলিস্ট সম্পন্ন করে ছবি আপলোড করুন।"
+  },
   "calendar": {
     "monthly": "মাসিক",
     "weekly": "সাপ্তাহিক",

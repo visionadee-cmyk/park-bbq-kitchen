@@ -259,6 +259,8 @@ export default function BookingPage() {
         setError(t('booking.alreadyBooked'));
       } else if (err.message === 'slot_unavailable') {
         setError(t('booking.slotUnavailable'));
+      } else if (err.message === 'unclosed_booking') {
+        setError('You have an unclosed booking. Please complete the cleanup checklist and upload a photo before making a new booking.');
       } else {
         setError(t('booking.bookingError') + ': ' + (err.message || 'Unknown error'));
       }
