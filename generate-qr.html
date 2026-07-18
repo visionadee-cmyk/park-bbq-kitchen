@@ -176,7 +176,7 @@
             // Set canvas size (QR code + padding + header)
             const qrSize = 256;
             const padding = 20;
-            const headerHeight = 60;
+            const headerHeight = 80; // Increased to accommodate logo
             canvas.width = qrSize + padding * 2;
             canvas.height = qrSize + padding * 2 + headerHeight;
 
@@ -193,35 +193,79 @@
             ctx.fillStyle = '#667eea';
             ctx.fillRect(padding, padding, qrSize, headerHeight);
 
-            // Add app name text
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 18px Arial';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('Park BBQ Kitchen', canvas.width / 2, padding + headerHeight / 2);
+            // Load and draw logo
+            const logoImg = new Image();
+            logoImg.crossOrigin = 'anonymous';
+            logoImg.onload = function() {
+                // Draw logo centered in header
+                const logoSize = 40;
+                const logoX = padding + (qrSize - logoSize) / 2;
+                const logoY = padding + 10;
+                ctx.drawImage(logoImg, logoX, logoY, logoSize, logoSize);
 
-            // Add subtitle
-            ctx.font = '12px Arial';
-            ctx.fillStyle = '#ffffff';
-            ctx.fillText('Booking System', canvas.width / 2, padding + headerHeight / 2 + 20);
+                // Add app name text below logo
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 16px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('Park BBQ Kitchen', canvas.width / 2, padding + 10 + logoSize + 15);
 
-            // Draw QR code
-            const qrY = padding + headerHeight + padding;
-            ctx.drawImage(qrImg, padding, qrY, qrSize, qrSize);
+                // Add subtitle
+                ctx.font = '11px Arial';
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText('Booking System', canvas.width / 2, padding + 10 + logoSize + 30);
 
-            // Convert canvas to image
-            const brandedQR = document.getElementById('brandedQR');
-            brandedQR.src = canvas.toDataURL('image/png');
-            brandedQR.style.display = 'block';
-            brandedQR.style.maxWidth = '100%';
-            brandedQR.style.height = 'auto';
-            brandedQR.style.borderRadius = '10px';
+                // Draw QR code
+                const qrY = padding + headerHeight + padding;
+                ctx.drawImage(qrImg, padding, qrY, qrSize, qrSize);
 
-            // Hide original QR code
-            document.getElementById('qrcode').style.display = 'none';
+                // Convert canvas to image
+                const brandedQR = document.getElementById('brandedQR');
+                brandedQR.src = canvas.toDataURL('image/png');
+                brandedQR.style.display = 'block';
+                brandedQR.style.maxWidth = '100%';
+                brandedQR.style.height = 'auto';
+                brandedQR.style.borderRadius = '10px';
 
-            // Show download button
-            document.getElementById('downloadBtn').style.display = 'block';
+                // Hide original QR code
+                document.getElementById('qrcode').style.display = 'none';
+
+                // Show download button
+                document.getElementById('downloadBtn').style.display = 'block';
+            };
+
+            logoImg.onerror = function() {
+                // If logo fails to load, draw text only
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 18px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('Park BBQ Kitchen', canvas.width / 2, padding + headerHeight / 2);
+
+                ctx.font = '12px Arial';
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText('Booking System', canvas.width / 2, padding + headerHeight / 2 + 20);
+
+                // Draw QR code
+                const qrY = padding + headerHeight + padding;
+                ctx.drawImage(qrImg, padding, qrY, qrSize, qrSize);
+
+                // Convert canvas to image
+                const brandedQR = document.getElementById('brandedQR');
+                brandedQR.src = canvas.toDataURL('image/png');
+                brandedQR.style.display = 'block';
+                brandedQR.style.maxWidth = '100%';
+                brandedQR.style.height = 'auto';
+                brandedQR.style.borderRadius = '10px';
+
+                // Hide original QR code
+                document.getElementById('qrcode').style.display = 'none';
+
+                // Show download button
+                document.getElementById('downloadBtn').style.display = 'block';
+            };
+
+            logoImg.src = '/logo/logo.jpeg';
         }
 
         function downloadQRCode() {
