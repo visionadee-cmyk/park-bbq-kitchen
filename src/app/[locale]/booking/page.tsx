@@ -382,7 +382,7 @@ export default function BookingPage() {
             <div className="text-xs text-gray-400 mt-1 sm:mt-2">{t('calendar.past')}</div>
           )}
           {isTooFar && (
-            <div className="text-xs text-gray-400 mt-1 sm:mt-2">{t('calendar.unavailable')}</div>
+            <div className="text-xs text-gray-400 mt-1 sm:mt-2">Available Soon</div>
           )}
         </div>
       );
