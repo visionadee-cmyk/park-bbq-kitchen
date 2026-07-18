@@ -34,6 +34,14 @@ export default function FAQPage() {
       {
         q: "Can I book the kitchen on weekends?",
         a: "Yes, you can book any day of the week. However, weekends may have higher demand."
+      },
+      {
+        q: "How far in advance can I book?",
+        a: "You can only book up to 3 days in advance (today, tomorrow, and day after tomorrow). The calendar will only show available dates within this 3-day window."
+      },
+      {
+        q: "How close to the booking time can I book?",
+        a: "You can only book slots that are at least 2 hours in the future. For example, if it's 10:00 AM, you cannot book the 09:00–11:00 slot, but you can book the 11:00–13:00 slot."
       }
     ],
     booking: [
@@ -73,7 +81,7 @@ export default function FAQPage() {
       },
       {
         q: "Can I change my booking date or time?",
-        a: "Yes, use the \"Request Change\" button in Manage Booking. The change requires admin approval."
+        a: "Yes, use the \"Request Change\" button in Manage Booking. The change requires admin approval and is subject to the same booking restrictions (3-day window and 2-hour prior)."
       },
       {
         q: "Can I cancel my booking?",

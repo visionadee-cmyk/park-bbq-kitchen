@@ -59,11 +59,16 @@ The Park BBQ Kitchen Booking System is a web-based application that allows emplo
 
 ### 2. Booking a Kitchen Slot
 
+**Important Booking Restrictions:**
+- **3-Day Booking Window**: You can only book for today, tomorrow, or the day after tomorrow (maximum 3 days in advance)
+- **2-Hour Prior Booking**: You can only book slots that are at least 2 hours in the future
+- The calendar will only show available dates within the 3-day window
+
 **Steps:**
 1. Click "Book Now" on the home page
 2. Select your name from the dropdown or search by name
 3. Enter your Employee Code (e.g., 13011)
-4. Select the booking date from the calendar
+4. Select the booking date from the calendar (only shows today + 2 days)
 5. Choose a time slot from available slots (green = available, red = fully booked)
 6. Enter number of guests (pax) - Maximum 50 guests
 7. Enter your contact number
@@ -80,7 +85,7 @@ The Park BBQ Kitchen Booking System is a web-based application that allows emplo
 
 **Screenshot Placeholder:**
 ```
-[SCREENSHOT: Calendar showing available dates with color-coded availability]
+[SCREENSHOT: Calendar showing available dates within 3-day window]
 ```
 
 **Screenshot Placeholder:**
@@ -125,10 +130,15 @@ The Park BBQ Kitchen Booking System is a web-based application that allows emplo
 
 ### 4. Requesting Date/Time Changes
 
+**Important:**
+- Change requests are subject to the same booking restrictions (3-day window and 2-hour prior)
+- You can only change to dates within the 3-day window (today + 2 days)
+- You can only change to slots that are at least 2 hours in the future
+
 **Steps:**
 1. Access your booking using Manage Booking
 2. Click "Request Change" button
-3. Select new date from calendar
+3. Select new date from calendar (only shows today + 2 days)
 4. Choose new time slot from available options
 5. Enter reason for change
 6. Click "Submit"
@@ -314,13 +324,19 @@ Access the Reports page to view:
 ### General Questions
 
 **Q: Do I need to login to use the app?**
-A: No, employees don't need to login. Simply open the app URL and click "Book Now" or "Manage Booking". Only admins need to login.
+A: No, employees don't need to login. Simply open the app URL and click "Book Now" or "Manage Booking".
 
 **Q: What languages are supported?**
 A: The app supports English, Dhivehi, Tamil, Malayalam, Hindi, and Bengali.
 
 **Q: Can I book the kitchen on weekends?**
 A: Yes, you can book any day of the week. However, weekends may have higher demand.
+
+**Q: How far in advance can I book?**
+A: You can only book up to 3 days in advance (today, tomorrow, and day after tomorrow). The calendar will only show available dates within this 3-day window.
+
+**Q: How close to the booking time can I book?**
+A: You can only book slots that are at least 2 hours in the future. For example, if it's 10:00 AM, you cannot book the 09:00–11:00 slot, but you can book the 11:00–13:00 slot.
 
 ### Booking Questions
 
@@ -351,7 +367,7 @@ A: Click "Manage Booking", enter your Booking Number and Password, then click "S
 A: Contact the admin. They can view all booking credentials in the admin panel.
 
 **Q: Can I change my booking date or time?**
-A: Yes, use the "Request Change" button in Manage Booking. The change requires admin approval.
+A: Yes, use the "Request Change" button in Manage Booking. The change requires admin approval and is subject to the same booking restrictions (3-day window and 2-hour prior).
 
 **Q: Can I cancel my booking?**
 A: Yes, use the "Cancel Booking" button in Manage Booking.

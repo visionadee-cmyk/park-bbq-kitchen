@@ -71,11 +71,19 @@ export default function UserManualPage() {
 
               <div>
                 <h3 className="font-semibold text-lg mb-3">2. Booking a Kitchen Slot</h3>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-3">
+                  <p className="text-blue-800 font-medium mb-2">Important Booking Restrictions:</p>
+                  <ul className="list-disc list-inside text-blue-700 space-y-1 text-sm">
+                    <li><strong>3-Day Booking Window:</strong> You can only book for today, tomorrow, or the day after tomorrow (maximum 3 days in advance)</li>
+                    <li><strong>2-Hour Prior Booking:</strong> You can only book slots that are at least 2 hours in the future</li>
+                    <li>The calendar will only show available dates within the 3-day window</li>
+                  </ul>
+                </div>
                 <ol className="list-decimal list-inside space-y-2 text-gray-600">
                   <li>Click "Book Now" on the home page</li>
                   <li>Select your name from the dropdown or search by name</li>
                   <li>Enter your Employee Code (e.g., 13011)</li>
-                  <li>Select the booking date from the calendar</li>
+                  <li>Select the booking date from the calendar (only shows today + 2 days)</li>
                   <li>Choose a time slot from available slots (green = available, red = fully booked)</li>
                   <li>Enter number of guests (pax) - Maximum 50 guests</li>
                   <li>Enter your contact number</li>
@@ -101,10 +109,13 @@ export default function UserManualPage() {
 
               <div>
                 <h3 className="font-semibold text-lg mb-3">4. Requesting Date/Time Changes</h3>
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-3">
+                  <p className="text-yellow-800 font-medium">Important: Change requests are subject to the same booking restrictions (3-day window and 2-hour prior). You can only change to dates within the 3-day window and slots that are at least 2 hours in the future.</p>
+                </div>
                 <ol className="list-decimal list-inside space-y-2 text-gray-600">
                   <li>Access your booking using Manage Booking</li>
                   <li>Click "Request Change" button</li>
-                  <li>Select new date from calendar</li>
+                  <li>Select new date from calendar (only shows today + 2 days)</li>
                   <li>Choose new time slot from available options</li>
                   <li>Enter reason for change</li>
                   <li>Click "Submit"</li>
