@@ -56,6 +56,12 @@ export default function BookingPage() {
     '21:00–23:00',
   ];
 
+  const getSlotStartTime = (slot: string) => {
+    const startTime = slot.split('–')[0];
+    const [hour, minute] = startTime.split(':').map(Number);
+    return { hour, minute };
+  };
+
   useEffect(() => {
     loadMonthAvailability();
   }, [currentMonth]);
@@ -151,9 +157,13 @@ export default function BookingPage() {
     const days = eachDayOfInterval({ start: monthStart, end: monthEnd });
     
     const availability = new Map<string, number>();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const maxBookingDate = addDays(today, 2); // Today + 2 days = 3 days total
     
     for (const day of days) {
-      if (day >= new Date() && day <= addDays(new Date(), 30)) {
+      // Only show dates within 3-day window (today + 2 days)
+      if (day >= today && day <= maxBookingDate) {
         const dateStr = format(day, 'yyyy-MM-dd');
         try {
           const bookings = await getBookingsByDate(dateStr);
@@ -193,6 +203,34 @@ export default function BookingPage() {
 
     if (!slot) {
       setError(t('booking.selectSlot'));
+      return;
+    }
+
+    // Validate 3-day booking window
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const maxBookingDate = addDays(today, 2);
+    
+    if (selectedDate < today) {
+      setError('You cannot book for past dates.');
+      return;
+    }
+    
+    if (selectedDate > maxBookingDate) {
+      setError('You can only book up to 3 days in advance (today + 2 days).');
+      return;
+    }
+
+    // Validate 2-hour prior booking restriction
+    const now = new Date();
+    const slotStartTime = getSlotStartTime(slot);
+    const bookingDateTime = new Date(selectedDate);
+    bookingDateTime.setHours(slotStartTime.hour, slotStartTime.minute, 0, 0);
+    
+    const hoursUntilBooking = (bookingDateTime.getTime() - now.getTime()) / (1000 * 60 * 60);
+    
+    if (hoursUntilBooking < 2) {
+      setError('You can only book slots that are at least 2 hours in the future.');
       return;
     }
 
@@ -300,11 +338,15 @@ export default function BookingPage() {
     }
     
     // Calendar days
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const maxBookingDate = addDays(today, 2);
+    
     for (const day of days) {
       const dateStr = format(day, 'yyyy-MM-dd');
       const available = dateAvailability.get(dateStr) || 0;
-      const isPast = day < new Date();
-      const isTooFar = day > addDays(new Date(), 30);
+      const isPast = day < today;
+      const isTooFar = day > maxBookingDate;
       const isSelected = selectedDate && isSameDay(day, selectedDate);
       const isWeekendDay = isWeekend(day);
       

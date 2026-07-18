@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { getBookingByCredentials, cancelBooking, requestBookingChange, updateBooking, getAvailableSlots } from '@/lib/bookings';
 import { ArrowLeft, Calendar as CalendarIcon, Clock, Users, AlertCircle, Edit, Upload, CheckCircle } from 'lucide-react';
-import { format } from 'date-fns';
+import { format, addDays } from 'date-fns';
 import { uploadToCloudinary } from '@/lib/cloudinaryUpload';
 
 export default function ManageBookingPage() {
@@ -102,6 +102,35 @@ export default function ManageBookingPage() {
       return;
     }
 
+    // Validate 3-day booking window
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const maxBookingDate = addDays(today, 2);
+    const requestedDateObj = new Date(requestedDate);
+    
+    if (requestedDateObj < today) {
+      setError('You cannot change to past dates.');
+      return;
+    }
+    
+    if (requestedDateObj > maxBookingDate) {
+      setError('You can only change to dates within 3 days (today + 2 days).');
+      return;
+    }
+
+    // Validate 2-hour prior booking restriction
+    const now = new Date();
+    const slotStartTime = getSlotStartTime(requestedSlot);
+    const bookingDateTime = new Date(requestedDate);
+    bookingDateTime.setHours(slotStartTime.hour, slotStartTime.minute, 0, 0);
+    
+    const hoursUntilBooking = (bookingDateTime.getTime() - now.getTime()) / (1000 * 60 * 60);
+    
+    if (hoursUntilBooking < 2) {
+      setError('You can only change to slots that are at least 2 hours in the future.');
+      return;
+    }
+
     setIsLoading(true);
     try {
       await requestBookingChange(booking.id, requestedDate, requestedSlot, changeReason);
@@ -127,6 +156,12 @@ export default function ManageBookingPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const getSlotStartTime = (slot: string) => {
+    const startTime = slot.split('–')[0];
+    const [hour, minute] = startTime.split(':').map(Number);
+    return { hour, minute };
   };
 
   const handleDateChange = async (date: string) => {
@@ -507,6 +542,7 @@ export default function ManageBookingPage() {
                     required
                     className="text-base"
                     min={new Date().toISOString().split('T')[0]}
+                    max={addDays(new Date(), 2).toISOString().split('T')[0]}
                   />
                 </div>
                 <div className="space-y-2">
