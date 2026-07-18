@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select } from '@/components/ui/select';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import Footer from '@/components/Footer';
 import { getAllBookings } from '@/lib/bookings';
 import { Booking } from '@/types';
 import { ArrowLeft, Download, Filter, FileText, FileSpreadsheet } from 'lucide-react';
@@ -173,7 +174,7 @@ export default function AdminReportsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-white shadow-sm border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center mb-4">
@@ -360,6 +361,7 @@ export default function AdminReportsPage() {
           </CardContent>
         </Card>
       </main>
+      <Footer />
     </div>
   );
 }

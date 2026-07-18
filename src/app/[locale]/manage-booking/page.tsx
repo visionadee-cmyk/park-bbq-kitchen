@@ -12,6 +12,7 @@ import { getBookingByCredentials, cancelBooking, requestBookingChange, updateBoo
 import { ArrowLeft, Calendar as CalendarIcon, Clock, Users, AlertCircle, Edit, Upload, CheckCircle } from 'lucide-react';
 import { format, addDays } from 'date-fns';
 import { uploadToCloudinary } from '@/lib/cloudinaryUpload';
+import Footer from '@/components/Footer';
 
 export default function ManageBookingPage() {
   const t = useTranslations();
@@ -236,7 +237,7 @@ export default function ManageBookingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -607,6 +608,7 @@ export default function ManageBookingPage() {
           </Card>
         )}
       </main>
+      <Footer />
     </div>
   );
 }

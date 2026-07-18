@@ -11,6 +11,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import Footer from '@/components/Footer';
 import { Search, LogOut, Users, Calendar, TrendingUp, Clock, X, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getAllBookings, getBookingStats, cancelBooking, deleteBooking, approveBookingChange, rejectBookingChange } from '@/lib/bookings';
 import { logBookingCancelled, logBookingDeleted } from '@/lib/auditLog';
@@ -195,7 +196,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-white shadow-sm border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center mb-4">
@@ -774,6 +775,7 @@ export default function AdminPage() {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 }

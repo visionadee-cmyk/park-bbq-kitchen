@@ -11,6 +11,7 @@ import { Select } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import SignaturePad from '@/components/SignaturePad';
+import Footer from '@/components/Footer';
 import { createBooking, getAvailableSlots, getBookingsByDate } from '@/lib/bookings';
 import { searchEmployees } from '@/lib/employees';
 import { uploadToCloudinary } from '@/lib/cloudinaryUpload';
@@ -392,7 +393,7 @@ export default function BookingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -771,6 +772,7 @@ export default function BookingPage() {
           </div>
         )}
       </main>
+      <Footer />
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { useRouter } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import Footer from '@/components/Footer';
 import { ArrowLeft, Book, ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
@@ -22,7 +23,7 @@ export default function UserManualPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -237,6 +238,7 @@ export default function UserManualPage() {
           )}
         </Card>
       </main>
+      <Footer />
     </div>
   );
 }
