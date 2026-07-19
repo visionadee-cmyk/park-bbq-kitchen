@@ -77,11 +77,55 @@
 
         .download-btn {
             background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
             margin-top: 20px;
+            transition: background 0.3s;
         }
 
         .download-btn:hover {
             background: #218838;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            #printInstructions {
+                display: none !important;
+            }
+            #downloadBtn {
+                display: none !important;
+            }
+            #posterContainer {
+                display: block !important;
+                background: white;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+            #poster {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+                width: 100%;
+                height: auto;
+            }
+            .logo-image {
+                width: 100px;
+                height: 100px;
+            }
         }
 
         #posterContainer {
@@ -89,15 +133,48 @@
             padding: 0;
             border-radius: 0;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            display: none;
+            position: fixed;
+            left: -9999px;
+            top: 0;
         }
 
-        #poster {
-            width: 794px; /* A4 width at 96 DPI */
-            height: 1123px; /* A4 height at 96 DPI */
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        #posterContainer.visible {
+            left: auto;
             position: relative;
-            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .controls, #printInstructions, #downloadBtn, #qrcode {
+                display: none !important;
+            }
+            #posterContainer {
+                display: block !important;
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                background: white;
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+            #poster {
+                box-shadow: none;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 794px;
+                height: auto;
+                aspect-ratio: 794 / 1123;
+            }
+            .logo-image {
+                width: 100px;
+                height: 100px;
+            }
         }
 
         .poster-header {
@@ -105,6 +182,16 @@
             padding: 40px;
             text-align: center;
             border-bottom: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .logo-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .poster-header h1 {
@@ -245,7 +332,7 @@
         <div id="posterContainer">
             <div id="poster">
                 <div class="poster-header">
-                    <img src="/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" class="w-24 h-24 mx-auto mb-4">
+                    <img src="public/logo/logo.jpeg" alt="Park BBQ Kitchen Logo" class="logo-image" onerror="this.style.display='none'">
                     <h1>Park BBQ Kitchen</h1>
                     <h2>Booking System</h2>
                 </div>
@@ -274,13 +361,19 @@
             </div>
         </div>
 
-        <button id="downloadBtn" class="download-btn" onclick="downloadPoster()" style="display: none;">
-            Download Poster (A4)
+        <div id="printInstructions" style="display: none; margin-top: 20px; text-align: center; color: white;">
+            <p style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px;">
+                <strong>Print Instructions:</strong> Press Ctrl+P (or Cmd+P on Mac) to print or save as PDF.<br>
+                Select "A4" paper size and "Scale to fit" for best quality.
+            </p>
+        </div>
+
+        <button id="downloadBtn" class="download-btn" onclick="window.print()" style="display: none;">
+            Print / Save as PDF
         </button>
     </div>
 
     <div id="qrcode"></div>
-    <canvas id="posterCanvas"></canvas>
 
     <script>
         function generatePoster() {
@@ -316,59 +409,12 @@
                     posterQR.innerHTML = '';
                     posterQR.appendChild(qrImg);
                     
-                    document.getElementById('posterContainer').style.display = 'block';
+                    document.getElementById('posterContainer').classList.add('visible');
+                    document.getElementById('printInstructions').style.display = 'block';
                     document.getElementById('downloadBtn').style.display = 'block';
                 }
             }, 100);
         }
-
-        function downloadPoster() {
-            const poster = document.getElementById('poster');
-            
-            // Use html2canvas if available, otherwise use a simple approach
-            const canvas = document.getElementById('posterCanvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Set canvas to A4 size at higher resolution
-            canvas.width = 2480; // A4 width at 300 DPI
-            canvas.height = 3508; // A4 height at 300 DPI
-            
-            // Create a simple download by creating an image from the poster
-            // For a more robust solution, html2canvas library would be needed
-            alert('For best quality, use browser print: Press Ctrl+P (or Cmd+P on Mac) and select "Save as PDF" or print directly. Make sure to select "A4" paper size and scale to fit.');
-            
-            // Alternative: Open print dialog
-            window.print();
-        }
-
-        // Generate poster on page load
-        window.onload = function() {
-            generatePoster();
-        };
-
-        // Add print styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @media print {
-                body {
-                    background: white;
-                    padding: 0;
-                }
-                .controls {
-                    display: none;
-                }
-                #posterContainer {
-                    display: block !important;
-                    box-shadow: none;
-                    margin: 0;
-                }
-                #poster {
-                    box-shadow: none;
-                    margin: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
